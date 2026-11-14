@@ -1,0 +1,125 @@
+.blood-pressure-chart {
+  --pressure-systolic: #5baff5;
+  --pressure-diastolic: #ff7e9e;
+  margin: 1.25rem 0 0;
+  padding: 1rem 0.75rem 0.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.65rem;
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.blood-pressure-chart__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blood-pressure-chart__heading h3 {
+  font-size: 0.78rem;
+  font-weight: 550;
+}
+
+.blood-pressure-chart__heading > span {
+  color: var(--text-muted, var(--muted));
+  font-size: 0.65rem;
+}
+
+.blood-pressure-chart .blood-pressure-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.8rem;
+  margin: 0.65rem 0 0.75rem;
+  list-style: none;
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+}
+
+.blood-pressure-chart__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blood-pressure-chart__swatch {
+  width: 1rem;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.blood-pressure-chart__swatch--systolic {
+  background: var(--pressure-systolic);
+}
+
+.blood-pressure-chart__swatch--diastolic {
+  background: var(--pressure-diastolic);
+}
+
+.blood-pressure-chart__plot {
+  position: relative;
+}
+
+.blood-pressure-chart__plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.blood-pressure-chart__grid {
+  stroke: var(--border);
+  stroke-opacity: 0.6;
+  stroke-dasharray: 3 5;
+}
+
+.blood-pressure-chart__axis {
+  stroke: var(--border);
+  stroke-opacity: 0.7;
+}
+
+.blood-pressure-chart__tick {
+  fill: var(--text-muted, var(--muted));
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.blood-pressure-chart__line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.blood-pressure-chart__line--systolic {
+  stroke: var(--pressure-systolic);
+}
+
+.blood-pressure-chart__line--diastolic {
+  stroke: var(--pressure-diastolic);
+}
+
+.blood-pressure-chart__point--systolic {
+  fill: var(--pressure-systolic);
+}
+
+.blood-pressure-chart__point--diastolic {
+  fill: var(--pressure-diastolic);
+}
+
+.blood-pressure-chart__empty {
+  position: absolute;
+  top: 46%;
+  left: 53%;
+  width: max-content;
+  max-width: 75%;
+  transform: translate(-50%, -50%);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.25rem;
+  background: var(--surface);
+  color: var(--text-muted, var(--muted));
+  font-size: 0.65rem;
+  text-align: center;
+}
