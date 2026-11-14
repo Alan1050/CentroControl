@@ -1,75 +1,62 @@
-# React + TypeScript + Vite
+# NeuroOrbit Lab · Centro de control
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Panel web para visualizar la salud y el bienestar de una tripulación de astronautas. Reúne la información de cada integrante y una gráfica de presión arterial en una interfaz adaptable a distintos tamaños de pantalla.
 
-Currently, two official plugins are available:
+**Estado actual:** prototipo de interfaz. Las tarjetas y las gráficas están preparadas para recibir datos, pero todavía no hay conexión con sensores, API ni almacenamiento persistente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funciones actuales
 
-## React Compiler
+- Tarjetas individuales para los astronautas A, B y C.
+- Campos para nombre, estado, nivel de radiación y estado mental, pendientes de conectar a datos.
+- Gráficas de presión sistólica y diastólica en **mmHg**, dibujadas con SVG sin una biblioteca de gráficas adicional.
+- Estado vacío «Sin lecturas registradas» cuando no hay mediciones disponibles.
+- Distribución de una, dos o tres columnas según el ancho de pantalla.
+- Tema claro u oscuro según la preferencia del sistema.
+- Footer al pie de la ventana cuando hay poco contenido y al final de la página cuando el contenido crece.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías
 
-## Expanding the ESLint configuration
+| Tecnología | Uso |
+| --- | --- |
+| React | Componentes e interfaz de usuario. |
+| TypeScript | Tipado de componentes y lecturas biométricas. |
+| Vite | Servidor de desarrollo y compilación de producción. |
+| CSS | Diseño adaptable, temas y estilos de los componentes. |
+| SVG | Ejes, cuadrícula y series de las gráficas. |
+| ESLint | Análisis estático del código. |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Estructura del proyecto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+CentroControl/
+├── public/                       # Recursos estáticos
+├── src/
+│   ├── assets/                   # Identidad visual de NeuroOrbit Lab
+│   ├── components/
+│   │   ├── BloodPressureChart.tsx # Gráfica y tipo de lectura de presión arterial
+│   │   ├── BloodPressureChart.css
+│   │   ├── Card.tsx               # Tarjeta reutilizable de cada astronauta
+│   │   ├── Header.tsx
+│   │   ├── Header.css
+│   │   ├── Footer.tsx
+│   │   └── Footer.css
+│   ├── App.tsx                    # Lista de astronautas y lecturas por integrante
+│   ├── App.css                    # Distribución del panel y tarjetas
+│   ├── index.css                  # Estilos globales y variables de tema
+│   └── main.tsx                   # Entrada de React
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Equipo del proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Iris Anahi Vargas Brambila.
+- Kevin Yahir Bernal Aguirre.
+- [Alan Emir Medina Delgado](https://devalanmedina.netlify.app/).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+-----
 
-```
+Propuesta realizada para el [NASA SPACE APPS CHALLENGE Edición 2026](https://www.spaceappschallenge.org/) en el reto #5 denominado como "Create Health Monitoring Software for Astronauts on Space Missions"
