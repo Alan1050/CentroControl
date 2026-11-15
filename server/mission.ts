@@ -316,6 +316,7 @@ export class MissionService {
             })),
             processedOn: 'edge_device',
             ...(typeof r.latencyMs === 'number' && Number.isFinite(r.latencyMs) ? { latencyMs: r.latencyMs } : {}),
+            ...(typeof r.thumbnail === 'string' && r.thumbnail.length < 900000 ? { thumbnail: r.thumbnail } : {}),
           };
         } else if (typeof body.image === 'string') {
           if (!this.deps.vision) throw new HttpError(503, 'El análisis visual todavía no está configurado en el servidor.');

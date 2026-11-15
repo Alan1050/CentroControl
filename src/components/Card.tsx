@@ -30,38 +30,33 @@ export default function Card({ crew, pending, onRespond, connected, serverTime }
 
     <div className="device-status">
       <span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />
-      Ojos móvil: {deviceOnline ? (
-        latest?.processedOn === 'edge_device'
-          ? `activo · 🛰️ Edge AI (${latest.latencyMs ? `${latest.latencyMs}ms` : 'en móvil'})`
-          : crew.cameraStatus === 'live' ? 'teléfono conectado y activo' : 'teléfono conectado'
-      ) : 'esperando escaneo con smartphone'}
+      Cámara móvil: {deviceOnline ? (crew.cameraStatus === 'live' ? 'activa y transmitiendo' : 'dispositivo activo') : 'desconectada'}
     </div>
     
     <section className="visual-scene">
       <div className="scene-header">
         <span className="section-kicker">ÚLTIMA OBSERVACIÓN</span>
-        {latest?.processedOn === 'edge_device' && (
-          <span className="edge-badge">
-            {latest?.engine === 'dual_contingency' ? '🛰️ Motor Dual On-Device' : '✨ Gemini 3.8 Flash (Edge)'}
-          </span>
-        )}
       </div>
+      {latest?.thumbnail && (
+        <div className="visual-thumbnail-wrap">
+          <img src={latest.thumbnail} alt="Captura de la cámara" className="visual-thumbnail" />
+        </div>
+      )}
       <p>{latest?.summary || ''}</p>
-      {latest?.impact && <div className="impact-box"><strong>Evaluación contextual según perfil (IA):</strong><p>{latest.impact}</p></div>}
+      {latest?.impact && <div className="impact-box"><strong>Evaluación contextual según perfil:</strong><p>{latest.impact}</p></div>}
       {latest?.suggestion && <div className="suggestion-box"><strong>Procedimiento sugerido:</strong><p>{latest.suggestion}</p></div>}
       {latest && (
         <small>
-          {new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {latest.processedOn === 'edge_device' ? `🛰️ Telemetría recibida de móvil (${latest.latencyMs ? `${latest.latencyMs}ms` : 'Edge AI'}) · Sin transferir video a la Tierra` : sourceLabels[latest.source]}
+          Observación confirmada · Sin transferir video continuo a la Tierra
         </small>
       )}
     </section>
     
-    <div className="reported-state"><span>Estado comunicado por el astronauta</span><strong>{crew.selfReport ? stateLabels[crew.selfReport.state] : 'Sin confirmar'}</strong>
-      {crew.selfReport && <small>{new Date(crew.selfReport.timestamp).toLocaleTimeString('es-MX')}</small>}</div>
+    <div className="reported-state"><span>Estado comunicado por el astronauta</span><strong>{crew.selfReport ? stateLabels[crew.selfReport.state] : 'Sin confirmar'}</strong></div>
     {crew.quality === 'desactualizada' && <p className="inline-error">No hay observaciones recientes. Se conserva el último entorno analizado.</p>}
     {active.length ? <div className="crew-alerts">{active.map(a => <AlertContent key={a.id} alert={a} pending={pending} onRespond={onRespond} />)}</div>
       : latest && <p className="camera-quiet">Sin posibles detonadores en la última observación.</p>}
-    {crew.visualAnalyses.length > 0 && <details className="context-details"><summary>Observaciones anteriores ({crew.visualAnalyses.length})</summary>{crew.visualAnalyses.slice(-8).toReversed().map(a => <p key={a.id}><strong>{new Date(a.timestamp).toLocaleTimeString('es-MX')}</strong> · {a.summary}</p>)}</details>}
+    {crew.visualAnalyses.length > 0 && <details className="context-details"><summary>Observaciones anteriores ({crew.visualAnalyses.length})</summary>{crew.visualAnalyses.slice(-8).toReversed().map(a => <p key={a.id}>{a.summary}</p>)}</details>}
     
     <section className="telemetry-section" aria-label="Telemetría fisiológica y ambiental">
       <div className="telemetry-charts-grid">

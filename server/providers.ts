@@ -55,7 +55,9 @@ export function providers(env: Record<string, string | undefined>, request = fet
     };
   } else if (env.GEMINI_API_KEY) {
     const rawModel = env.GEMINI_MODEL?.trim();
-    const defaultModel = (!rawModel || rawModel.includes('2.5') || rawModel.includes('1.5') || rawModel.includes('2.0')) ? 'gemini-3.8-flash' : rawModel;
+    const defaultModel = (!rawModel || rawModel.includes('2.5') || rawModel.includes('1.5') || rawModel.includes('2.0') || rawModel.includes('3.8'))
+      ? 'gemini-3.5-flash'
+      : rawModel;
     configured.clientAi = {
       enabled: true,
       provider: 'gemini',
@@ -68,7 +70,7 @@ export function providers(env: Record<string, string | undefined>, request = fet
         : '';
       const instructions = `Eres el asistente de monitoreo de entorno para la misión NeuroOrbit. Describe únicamente evidencia visible de la cámara. No infieras emociones ni signos vitales. ${profileInfo} Identifica si hay: espacios_reducidos, desorden_visual o alerta_visual. Si no hay evidencia, devuelve observations vacío. Evalúa brevemente si el entorno genera fricción según el rol del tripulante y sugiere una acción breve acorde a su perfil. Todo en español.`;
       const pureBase64 = image.replace(/^data:image\/[a-zA-Z]+;base64,/, '');
-      const modelsToTry = [defaultModel, 'gemini-3.8-flash', 'gemini-4-hydrogen'].filter((m, i, arr) => arr.indexOf(m) === i);
+      const modelsToTry = [defaultModel, 'gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash'].filter((m, i, arr) => arr.indexOf(m) === i);
       let lastError = 'El proveedor visual de Google AI no está disponible.';
       for (const m of modelsToTry) {
         const response = await request(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent?key=${encodeURIComponent(env.GEMINI_API_KEY!)}`, {
