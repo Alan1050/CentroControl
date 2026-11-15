@@ -27,7 +27,7 @@ function Dashboard() {
   const [saved, setSaved] = useState<SavedSession | null>(recover);
   const [apiUrl] = useState(import.meta.env.VITE_API_URL || window.location.origin);
   const [formError, setFormError] = useState(''); const [creating, setCreating] = useState(false);
-  const { data, error, action, pending, lastContact } = useMission(saved?.connection || null);
+  const { data, error, action, pending } = useMission(saved?.connection || null);
   const connect = (value: SavedSession) => { remember(value); setSaved(value); setFormError(''); };
   const leave = () => { remember(null); setSaved(null); window.history.replaceState(null, '', window.location.pathname); };
   async function start(mode: 'camera' | 'camera-demo') {
@@ -61,7 +61,7 @@ function Dashboard() {
   const isCameraSession = data?.mode === 'camera' || data?.mode === 'camera-demo';
   const simulated = data?.mode === 'camera-demo';
   const alerts = data?.crew.flatMap(c => c.alerts).sort((a, b) => Date.parse(b.startedAt) - Date.parse(a.startedAt)) || [];
-  const active = alerts.filter(a => a.active); const control = data?.role === 'control';
+  const control = data?.role === 'control';
   return <div className="app-shell"><Header /><main className="main-content">
     <div className="page-heading"><div><p className="eyebrow"><span /> MISIÓN · ASISTENCIA CON CÁMARA</p><h1>Centro de control</h1>
       <p className="page-description">Lo que ve el astronauta, las situaciones a revisar y la acción sugerida.</p></div>
@@ -85,10 +85,6 @@ function Dashboard() {
     {data && !isCameraSession && <div className="connection-warning">Esta sesión pertenece a otra versión. Inicia una sesión de cámara para usar el MVP.</div>}
     {data && isCameraSession && <>
       {!simulated && !data.capabilities.vision && <div className="connection-warning" role="status"><strong>Análisis visual pendiente de activar</strong><p>Ya puedes conectar las cámaras. El servicio de visión debe configurarse en CentroControl para analizar imágenes reales.</p></div>}
-      <section className="mission-summary" aria-label="Resumen de misión"><div><span>TRIPULANTES</span><strong>{data.crew.length.toString().padStart(2, '0')}</strong></div>
-        <div><span>DETONADORES ACTIVOS</span><strong className={active.length ? 'attention-text' : ''}>{active.length.toString().padStart(2, '0')}</strong></div>
-        <div><span>ÚLTIMA SINCRONIZACIÓN</span><strong className="summary-time">{lastContact ? new Date(lastContact).toLocaleTimeString('es-MX') : '—'}</strong></div>
-        <div><span>ORIGEN</span><strong className="summary-time">{simulated ? 'Demo visual' : 'Cámara de smartphone'}</strong></div></section>
       <section className="datos-container" aria-label="Observaciones de los astronautas">{data.crew.map(crew => <Card key={crew.id} crew={crew} pending={pending} connected={!error} serverTime={data.serverTime}
         onRespond={control ? (alertId, response) => void action('/response', { astronautId: crew.id, alertId, action: response }) : undefined} />)}</section>
       <section className="event-history"><div className="section-heading"><div><span className="section-kicker">SEGUIMIENTO</span><h2>Historial de situaciones y acciones</h2></div><span>{alerts.length} registros</span></div>

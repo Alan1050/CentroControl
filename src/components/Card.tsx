@@ -20,7 +20,7 @@ export default function Card({ crew, pending, onRespond, connected, serverTime }
   return <article className={`astronaut-card ${active.length ? 'astronaut-card--attention' : ''}`} data-astronaut={crew.id}>
     <div className="astronaut-card__heading"><div className="astronaut-card__avatar" aria-hidden="true">{crew.id}</div>
       <div><p className="astronaut-card__number">{crew.profile.specialty.replaceAll('_', ' ')}</p><h2>Astronauta {crew.id}</h2></div>
-      <span className="status-pill">{!connected ? 'Conexión interrumpida' : latest?.source === 'simulador' ? 'Escena simulada' : latest ? 'Observación visual' : 'Esperando cámara'}</span></div>
+    </div>
     
     <div className="astronaut-profile-brief">
       <span className="profile-pill">Especialidad: {crew.profile.specialty.replaceAll('_', ' ')}</span>
@@ -41,7 +41,9 @@ export default function Card({ crew, pending, onRespond, connected, serverTime }
       <div className="scene-header">
         <span className="section-kicker">ÚLTIMA OBSERVACIÓN</span>
         {latest?.processedOn === 'edge_device' && (
-          <span className="edge-badge">🛰️ Edge AI (Traje / Móvil)</span>
+          <span className="edge-badge">
+            {latest?.engine === 'dual_contingency' ? '🛰️ Motor Dual On-Device' : '✨ Gemini 3.8 Flash (Edge)'}
+          </span>
         )}
       </div>
       <p>{latest?.summary || ''}</p>
