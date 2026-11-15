@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchActiveSession, sendAction } from './client.ts';
 import { runEdgeVision } from './client-ai.ts';
 import { connectionFromFragment, interventionText, stateLabels, triggerLabels } from './protocol.ts';
@@ -15,6 +15,14 @@ function initialConnection(): Connection | null {
   } catch { return null; }
 }
 
+function getRetrySeconds(e: unknown): number | null {
+  if (typeof e === 'object' && e !== null && 'retryAfterSeconds' in e) {
+    const s = Number((e as { retryAfterSeconds: unknown }).retryAfterSeconds);
+    if (Number.isFinite(s) && s > 0) return s;
+  }
+  return null;
+}
+
 export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus: string; capture: () => Promise<string> }) {
   const [connection, setConnection] = useState<Connection | null>(initialConnection);
   const [activeSession, setActiveSession] = useState<SessionCreated | null>(null);
@@ -23,8 +31,24 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
   const [automatic, setAutomatic] = useState(false);
   const [isProcessingAi, setIsProcessingAi] = useState(false);
   const [aiStatusText, setAiStatusText] = useState('');
+
+  const lastExecutionRef = useRef<number>(0);
+  const inFlightRef = useRef<boolean>(false);
+  const cooldownUntilRef = useRef<number>(0);
+  const activeSessionRef = useRef(activeSession);
+  const connectionRef = useRef(connection);
+  const captureRef = useRef(capture);
+
   const { data, error, pending, action } = useMission(connection);
   const crew = data?.crew.find(c => c.id === connection?.astronautId);
+  const profileRef = useRef(crew?.profile);
+
+  useEffect(() => {
+    activeSessionRef.current = activeSession;
+    connectionRef.current = connection;
+    captureRef.current = capture;
+    profileRef.current = crew?.profile;
+  });
   const latest = crew?.visualAnalyses.at(-1);
   const alerts = crew?.alerts.filter(a => a.active) || [];
   const alert = alerts[0];
@@ -110,81 +134,134 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
   useEffect(() => {
     if (!automatic || cameraStatus !== 'live' || !data?.capabilities.vision || !cameraSession || !connection?.astronautId) return;
     let cancelled = false;
-    let running = false;
+
     const sample = async () => {
-      if (running || document.visibilityState === 'hidden') return;
-      running = true;
+      const now = Date.now();
+      if (now < cooldownUntilRef.current) {
+        const remaining = Math.ceil((cooldownUntilRef.current - now) / 1000);
+        setLocalError(`Límite de Google AI (5/min). Enfriando por ${remaining}s…`);
+        return;
+      }
+      if (inFlightRef.current || now - lastExecutionRef.current < 22000) {
+        return;
+      }
+      if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+      const conn = connectionRef.current;
+      if (!conn?.astronautId) return;
+
+      inFlightRef.current = true;
+      lastExecutionRef.current = now;
       setIsProcessingAi(true);
       try {
-        const image = await capture();
+        const image = await captureRef.current();
         if (cancelled) return;
 
         let result: VisualResult | null = null;
-        if (activeSession?.clientAi?.apiKey) {
+        const sess = activeSessionRef.current;
+        if (sess?.clientAi?.apiKey) {
           try {
             setAiStatusText('Ejecutando Edge AI en smartphone…');
-            result = await runEdgeVision(image, crew?.profile, {
-              apiKey: activeSession.clientAi.apiKey,
-              model: activeSession.clientAi.model,
+            result = await runEdgeVision(image, profileRef.current, {
+              apiKey: sess.clientAi.apiKey,
+              model: sess.clientAi.model,
             });
             setAiStatusText(`Edge AI completado (${result.latencyMs ?? 0} ms) · Transmitiendo telemetría…`);
-          } catch (edgeErr) {
+          } catch (edgeErr: unknown) {
+            const retry = getRetrySeconds(edgeErr);
+            if (retry) {
+              cooldownUntilRef.current = Date.now() + retry * 1000;
+              setLocalError(`Límite gratuito de Google AI (5/min). Enfriando por ${retry}s…`);
+              return;
+            }
             console.warn('Fallo en Edge AI local, recurriendo al servidor:', edgeErr);
           }
         }
 
         if (!cancelled) {
           if (result) {
-            // Envía únicamente la telemetría procesada (sin imagen pesada a la Tierra)
-            await sendAction(connection, '/vision', { astronautId: connection.astronautId, result });
+            await sendAction(conn, '/vision', { astronautId: conn.astronautId, result });
           } else {
-            await sendAction(connection, '/vision', { astronautId: connection.astronautId, image });
+            await sendAction(conn, '/vision', { astronautId: conn.astronautId, image });
           }
           setLocalError('');
         }
-      } catch (e) {
-        if (!cancelled) setLocalError(e instanceof Error ? e.message : 'No se pudo observar el entorno.');
+      } catch (e: unknown) {
+        if (!cancelled) {
+          const retry = getRetrySeconds(e);
+          if (retry) {
+            cooldownUntilRef.current = Date.now() + retry * 1000;
+            setLocalError(`Límite gratuito de Google AI (5/min). Enfriando por ${retry}s…`);
+          } else {
+            setLocalError(e instanceof Error ? e.message : 'No se pudo observar el entorno.');
+          }
+        }
       } finally {
-        running = false;
+        inFlightRef.current = false;
         setIsProcessingAi(false);
       }
     };
+
     void sample();
-    const timer = setInterval(() => void sample(), 20000);
+    const timer = setInterval(() => void sample(), 22000);
     return () => { cancelled = true; clearInterval(timer); };
-  }, [automatic, cameraStatus, data?.capabilities.vision, cameraSession, connection, capture, activeSession, crew?.profile]);
+  }, [automatic, cameraStatus, data?.capabilities.vision, cameraSession, connection?.astronautId]);
 
   function respond(response: ResponseAction) {
     if (alert && crew) void action('/response', { astronautId: crew.id, alertId: alert.id, action: response });
   }
 
   async function analyze() {
-    if (!connection?.astronautId) return;
+    const conn = connectionRef.current;
+    if (!conn?.astronautId) return;
+    const now = Date.now();
+    if (now < cooldownUntilRef.current) {
+      const remaining = Math.ceil((cooldownUntilRef.current - now) / 1000);
+      setLocalError(`Límite de Google AI (5/min). Enfriando por ${remaining}s…`);
+      return;
+    }
+    if (inFlightRef.current) return;
+
+    inFlightRef.current = true;
+    lastExecutionRef.current = now;
     setLocalError('');
     setIsProcessingAi(true);
     setAiStatusText('Ejecutando Edge AI en smartphone…');
     try {
-      const image = await capture();
+      const image = await captureRef.current();
       let result: VisualResult | null = null;
-      if (activeSession?.clientAi?.apiKey) {
+      const sess = activeSessionRef.current;
+      if (sess?.clientAi?.apiKey) {
         try {
-          result = await runEdgeVision(image, crew?.profile, {
-            apiKey: activeSession.clientAi.apiKey,
-            model: activeSession.clientAi.model,
+          result = await runEdgeVision(image, profileRef.current, {
+            apiKey: sess.clientAi.apiKey,
+            model: sess.clientAi.model,
           });
           setAiStatusText(`Edge AI completado (${result.latencyMs ?? 0} ms) · Transmitiendo telemetría…`);
-        } catch (edgeErr) {
+        } catch (edgeErr: unknown) {
+          const retry = getRetrySeconds(edgeErr);
+          if (retry) {
+            cooldownUntilRef.current = Date.now() + retry * 1000;
+            setLocalError(`Límite gratuito de Google AI (5/min). Enfriando por ${retry}s…`);
+            return;
+          }
           console.warn('Fallo en Edge AI local, recurriendo al servidor:', edgeErr);
         }
       }
       if (result) {
-        await action('/vision', { astronautId: connection.astronautId, result });
+        await action('/vision', { astronautId: conn.astronautId, result });
       } else {
-        await action('/vision', { astronautId: connection.astronautId, image });
+        await action('/vision', { astronautId: conn.astronautId, image });
       }
-    } catch (e) {
-      setLocalError(e instanceof Error ? e.message : 'No se pudo capturar el entorno.');
+    } catch (e: unknown) {
+      const retry = getRetrySeconds(e);
+      if (retry) {
+        cooldownUntilRef.current = Date.now() + retry * 1000;
+        setLocalError(`Límite gratuito de Google AI (5/min). Enfriando por ${retry}s…`);
+      } else {
+        setLocalError(e instanceof Error ? e.message : 'No se pudo capturar el entorno.');
+      }
     } finally {
+      inFlightRef.current = false;
       setIsProcessingAi(false);
     }
   }

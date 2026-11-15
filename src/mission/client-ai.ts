@@ -81,6 +81,13 @@ export async function runEdgeVision(
   if (!response.ok) {
     const errJson = await response.json().catch(() => null) as { error?: { message?: string } } | null;
     const msg = errJson?.error?.message || `Google AI respondió código ${response.status}`;
+    if (response.status === 429 || msg.toLowerCase().includes('quota') || msg.toLowerCase().includes('rate')) {
+      const match = msg.match(/retry in ([0-9.]+)s/i);
+      const retrySec = match ? Math.ceil(Number(match[1])) : 60;
+      const quotaErr = new Error(`Límite de Google AI (5/min). Esperando ${retrySec}s.`);
+      (quotaErr as unknown as { retryAfterSeconds: number }).retryAfterSeconds = retrySec;
+      throw quotaErr;
+    }
     throw new Error(`Edge AI móvil: ${msg}`);
   }
 
