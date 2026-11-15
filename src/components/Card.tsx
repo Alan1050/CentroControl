@@ -1,5 +1,6 @@
 import { interventionText, sourceLabels, stateLabels, triggerLabels } from '../mission/protocol.ts';
 import type { Alert, CrewStatus, ResponseAction, Trigger } from '../mission/protocol.ts';
+import { EmotionRadarChart, RadiationLineChart } from './TelemetryCharts.tsx';
 
 function AlertContent({ alert, pending, onRespond }: { alert: Alert; pending: boolean; onRespond?: (id: string, action: ResponseAction) => void }) {
   const suggestion = alert.intervention ? interventionText[alert.intervention.item] : null;
@@ -10,9 +11,9 @@ function AlertContent({ alert, pending, onRespond }: { alert: Alert; pending: bo
     {onRespond && alert.active && <button className="button button--small" disabled={pending} onClick={() => onRespond(alert.id, 'reconocida')}>Reconocer aviso</button>}
   </div>;
 }
-export default function Card({ crew, pending, onRespond, joinLink, connected, serverTime }: {
+export default function Card({ crew, pending, onRespond, connected, serverTime }: {
   crew: CrewStatus; pending: boolean; onRespond?: (id: string, action: ResponseAction) => void;
-  joinLink?: string; connected: boolean; serverTime: string;
+  connected: boolean; serverTime: string;
 }) {
   const latest = crew.visualAnalyses.at(-1); const active = crew.alerts.filter(a => a.active);
   const deviceOnline = connected && crew.deviceLastSeen && Date.parse(serverTime) - Date.parse(crew.deviceLastSeen) < 75000;
@@ -60,21 +61,24 @@ export default function Card({ crew, pending, onRespond, joinLink, connected, se
       : latest && <p className="camera-quiet">Sin posibles detonadores en la última observación.</p>}
     {crew.visualAnalyses.length > 0 && <details className="context-details"><summary>Observaciones anteriores ({crew.visualAnalyses.length})</summary>{crew.visualAnalyses.slice(-8).toReversed().map(a => <p key={a.id}><strong>{new Date(a.timestamp).toLocaleTimeString('es-MX')}</strong> · {a.summary}</p>)}</details>}
     
-    {joinLink && <details className="join-details" open><summary>📱 Conectar teléfono · Astronauta {crew.id}</summary>
-      <p className="phone-required-note"><strong>Cámara exclusiva para smartphone:</strong> Escanea este código QR con la cámara de tu teléfono para abrir Ojos y transmitir el entorno.</p>
-      <div className="qr-container">
-        <img
-          src={`https://api.qrserver.com/v1/create-qr-code/?size=130x130&margin=2&data=${encodeURIComponent(joinLink)}`}
-          alt={`Código QR para teléfono de Astronauta ${crew.id}`}
-          width="130"
-          height="130"
-          className="qr-image"
-          loading="lazy"
-        />
-        <div className="qr-text">
-          <span>Apunta con la cámara de tu smartphone para conectar automáticamente</span>
+    <section className="telemetry-section" aria-label="Telemetría fisiológica y ambiental">
+      <div className="telemetry-charts-grid">
+        <div className="telemetry-chart-card">
+          <div className="chart-header">
+            <span className="chart-title">RADAR EMOCIONAL Y COGNITIVO</span>
+            <span className="demo-pill">DEMO</span>
+          </div>
+          <EmotionRadarChart astronautId={crew.id} selfReport={crew.selfReport?.state} />
+        </div>
+
+        <div className="telemetry-chart-card">
+          <div className="chart-header">
+            <span className="chart-title">DOSIMETRÍA DE RADIACIÓN</span>
+            <span className="demo-pill">DEMO</span>
+          </div>
+          <RadiationLineChart astronautId={crew.id} />
         </div>
       </div>
-    </details>}
+    </section>
   </article>;
 }

@@ -6,7 +6,7 @@ import Footer from './components/Footer.tsx';
 import AstronautScreen from './components/AstronautScreen.tsx';
 import { createSession, fetchActiveSession } from './mission/client.ts';
 import { connectionFromFragment, normalizeApiUrl, sourceLabels, triggerLabels } from './mission/protocol.ts';
-import type { AstronautId, Connection, SessionCreated } from './mission/protocol.ts';
+import type { Connection, SessionCreated } from './mission/protocol.ts';
 import { useMission } from './mission/useMission.ts';
 
 type SavedSession = { connection: Connection; keys?: SessionCreated };
@@ -62,9 +62,6 @@ function Dashboard() {
   const simulated = data?.mode === 'camera-demo';
   const alerts = data?.crew.flatMap(c => c.alerts).sort((a, b) => Date.parse(b.startedAt) - Date.parse(a.startedAt)) || [];
   const active = alerts.filter(a => a.active); const control = data?.role === 'control';
-  function crewLink(id: AstronautId) {
-    return `${window.location.origin}/ojos#astronautId=${id}`;
-  }
   return <div className="app-shell"><Header /><main className="main-content">
     <div className="page-heading"><div><p className="eyebrow"><span /> MISIÓN · ASISTENCIA CON CÁMARA</p><h1>Centro de control</h1>
       <p className="page-description">Lo que ve el astronauta, las situaciones a revisar y la acción sugerida.</p></div>
@@ -93,7 +90,7 @@ function Dashboard() {
         <div><span>ÚLTIMA SINCRONIZACIÓN</span><strong className="summary-time">{lastContact ? new Date(lastContact).toLocaleTimeString('es-MX') : '—'}</strong></div>
         <div><span>ORIGEN</span><strong className="summary-time">{simulated ? 'Demo visual' : 'Cámara de smartphone'}</strong></div></section>
       <section className="datos-container" aria-label="Observaciones de los astronautas">{data.crew.map(crew => <Card key={crew.id} crew={crew} pending={pending} connected={!error} serverTime={data.serverTime}
-        joinLink={crewLink(crew.id)} onRespond={control ? (alertId, response) => void action('/response', { astronautId: crew.id, alertId, action: response }) : undefined} />)}</section>
+        onRespond={control ? (alertId, response) => void action('/response', { astronautId: crew.id, alertId, action: response }) : undefined} />)}</section>
       <section className="event-history"><div className="section-heading"><div><span className="section-kicker">SEGUIMIENTO</span><h2>Historial de situaciones y acciones</h2></div><span>{alerts.length} registros</span></div>
         {alerts.length ? <div className="table-scroll"><table><thead><tr><th>Tripulante</th><th>Situación observada</th><th>Seguimiento</th><th>Origen</th><th>Respuesta</th></tr></thead><tbody>{alerts.slice(0, 30).map(a => <tr key={a.id}><td>Astronauta {a.astronautId}</td><td>{a.triggers.map(t => triggerLabels[t.trigger]).join(', ')}</td><td>{a.active ? 'A revisar' : 'Ya no aparece'}</td><td>{sourceLabels[a.source]}</td><td>{a.response?.action.replace('_', ' ') || 'Pendiente'}</td></tr>)}</tbody></table></div>
           : <p className="empty-history">Los posibles detonadores y las respuestas del astronauta aparecerán aquí.</p>}</section>
