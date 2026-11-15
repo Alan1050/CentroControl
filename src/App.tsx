@@ -5,7 +5,7 @@ import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import AstronautScreen from './components/AstronautScreen.tsx';
 import { createSession, fetchActiveSession } from './mission/client.ts';
-import { connectionFromFragment, normalizeApiUrl, sessionLink, sourceLabels, triggerLabels } from './mission/protocol.ts';
+import { connectionFromFragment, normalizeApiUrl, sourceLabels, triggerLabels } from './mission/protocol.ts';
 import type { AstronautId, Connection, SessionCreated } from './mission/protocol.ts';
 import { useMission } from './mission/useMission.ts';
 
@@ -26,7 +26,7 @@ export default function App() {
 function Dashboard() {
   const [saved, setSaved] = useState<SavedSession | null>(recover);
   const [apiUrl] = useState(import.meta.env.VITE_API_URL || window.location.origin);
-  const [join, setJoin] = useState(''); const [formError, setFormError] = useState(''); const [creating, setCreating] = useState(false);
+  const [formError, setFormError] = useState(''); const [creating, setCreating] = useState(false);
   const { data, error, action, pending, lastContact } = useMission(saved?.connection || null);
   const connect = (value: SavedSession) => { remember(value); setSaved(value); setFormError(''); };
   const leave = () => { remember(null); setSaved(null); window.history.replaceState(null, '', window.location.pathname); };
@@ -97,16 +97,6 @@ function Dashboard() {
       <section className="event-history"><div className="section-heading"><div><span className="section-kicker">SEGUIMIENTO</span><h2>Historial de situaciones y acciones</h2></div><span>{alerts.length} registros</span></div>
         {alerts.length ? <div className="table-scroll"><table><thead><tr><th>Tripulante</th><th>Situación observada</th><th>Seguimiento</th><th>Origen</th><th>Respuesta</th></tr></thead><tbody>{alerts.slice(0, 30).map(a => <tr key={a.id}><td>Astronauta {a.astronautId}</td><td>{a.triggers.map(t => triggerLabels[t.trigger]).join(', ')}</td><td>{a.active ? 'A revisar' : 'Ya no aparece'}</td><td>{sourceLabels[a.source]}</td><td>{a.response?.action.replace('_', ' ') || 'Pendiente'}</td></tr>)}</tbody></table></div>
           : <p className="empty-history">Los posibles detonadores y las respuestas del astronauta aparecerán aquí.</p>}</section>
-      {saved?.keys && <details className="share-session"><summary>Compartir CentroControl en modo consulta</summary><input readOnly aria-label="Enlace de consulta" value={sessionLink(window.location.origin, { ...saved.connection, key: saved.keys.viewerKey })} onFocus={e => e.currentTarget.select()} /></details>}
-      <details className="share-session"><summary>Unirse a otra sesión compartida</summary>
-        <form style={{ marginTop: '0.8rem' }} onSubmit={e => { e.preventDefault(); try {
-          const parsed = connectionFromFragment(new URL(join).hash);
-          if (!parsed || parsed.astronautId) throw new Error('Utiliza un enlace de CentroControl.'); connect({ connection: parsed });
-        } catch (e) { setFormError(e instanceof Error ? e.message : 'El enlace no es válido.'); } }}>
-          <label>Enlace de sesión compartida:<input type="url" value={join} required onChange={e => setJoin(e.target.value)} placeholder="https://tu-centro.netlify.app/#…" /></label>
-          <button className="button button--small" style={{ marginTop: '0.4rem' }}>Conectar a sesión</button>
-        </form>
-      </details>
       <p className="data-note">{simulated ? 'Escenas simuladas para demostrar el flujo.' : 'Observaciones de cámara y respuestas voluntarias del astronauta.'} Los posibles detonadores y el estado comunicado se muestran por separado.</p>
     </>}
     {saved && !data && !error && <div className="loading-state" role="status">Conectando con la sesión…</div>}

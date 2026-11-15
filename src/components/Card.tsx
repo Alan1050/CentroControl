@@ -43,7 +43,7 @@ export default function Card({ crew, pending, onRespond, joinLink, connected, se
           <span className="edge-badge">🛰️ Edge AI (Traje / Móvil)</span>
         )}
       </div>
-      <p>{latest?.summary || 'Escanea el código QR con el smartphone del astronauta para iniciar la observación del entorno.'}</p>
+      <p>{latest?.summary || ''}</p>
       {latest?.impact && <div className="impact-box"><strong>Evaluación contextual según perfil (IA):</strong><p>{latest.impact}</p></div>}
       {latest?.suggestion && <div className="suggestion-box"><strong>Procedimiento sugerido:</strong><p>{latest.suggestion}</p></div>}
       {latest && (
@@ -72,17 +72,7 @@ export default function Card({ crew, pending, onRespond, joinLink, connected, se
           loading="lazy"
         />
         <div className="qr-text">
-          <span>Apunta con la cámara de tu smartphone</span>
-          <button
-            type="button"
-            className="button button--small"
-            onClick={() => {
-              void navigator.clipboard.writeText(joinLink);
-              alert(`Enlace copiado para el teléfono del Astronauta ${crew.id}.`);
-            }}
-          >
-            Copiar enlace para el móvil
-          </button>
+          <span>Apunta con la cámara de tu smartphone para conectar automáticamente</span>
         </div>
       </div>
     </details>}
