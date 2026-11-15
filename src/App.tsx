@@ -29,7 +29,6 @@ function Dashboard() {
   const [formError, setFormError] = useState(''); const [creating, setCreating] = useState(false);
   const { data, error, action, pending } = useMission(saved?.connection || null);
   const connect = (value: SavedSession) => { remember(value); setSaved(value); setFormError(''); };
-  const leave = () => { remember(null); setSaved(null); window.history.replaceState(null, '', window.location.pathname); };
   async function start(mode: 'camera' | 'camera-demo') {
     setCreating(true); setFormError('');
     try {
@@ -63,9 +62,23 @@ function Dashboard() {
   const alerts = data?.crew.flatMap(c => c.alerts).sort((a, b) => Date.parse(b.startedAt) - Date.parse(a.startedAt)) || [];
   const control = data?.role === 'control';
   return <div className="app-shell"><Header /><main className="main-content">
-    <div className="page-heading"><div><p className="eyebrow"><span /> MISIÓN · ASISTENCIA CON CÁMARA</p><h1>Centro de control</h1>
-      <p className="page-description">Lo que ve el astronauta, las situaciones a revisar y la acción sugerida.</p></div>
-      <div className="live-indicator"><span className={`connection-dot ${data && !error ? 'connection-dot--live' : ''}`} />{data && !error ? 'Sesión sincronizada' : saved ? 'Conectando…' : 'Sin sesión'}</div></div>
+    <div className="page-heading">
+      <div>
+        <p className="eyebrow"><span /> MISIÓN · ASISTENCIA CON CÁMARA</p>
+        <h1>Centro de control</h1>
+      </div>
+      <div className="header-actions-group">
+        <div className="live-indicator">
+          <span className={`connection-dot ${data && !error ? 'connection-dot--live' : ''}`} />
+          {data && !error ? 'Sesión sincronizada' : saved ? 'Conectando…' : 'Sin sesión'}
+        </div>
+        {saved && (
+          <button className="button button--small button--ghost" disabled={creating} onClick={() => void start('camera')}>
+            Reiniciar misión
+          </button>
+        )}
+      </div>
+    </div>
     
     {!saved && <div className="loading-state" role="status" style={{ padding: '3.5rem 1.5rem', textAlign: 'center' }}>
       <span className="connection-dot connection-dot--live" style={{ width: 12, height: 12, marginBottom: '0.8rem' }} />
@@ -76,12 +89,7 @@ function Dashboard() {
     </div>}
 
     {(error || formError) && <div className="connection-warning" role="alert"><strong>{error ? 'Comunicación interrumpida' : 'No se pudo completar la operación'}</strong><p>{formError || error}</p>{data && <p>Se conserva la última información recibida y se reintenta la conexión.</p>}</div>}
-    {saved && <section className="mission-toolbar" aria-label="Controles de sesión"><div><strong>{simulated ? 'Demo visual compartida' : 'Sesión con cámara'}</strong><span>{data ? `Minuto ${data.clock.minute}${simulated ? ' / 59 · Escenas simuladas' : ' · Observación del entorno'}` : 'Esperando respuesta del servicio'}</span></div>
-      <div className="toolbar-actions">
-        <button className="button button--small" disabled={creating} onClick={() => void start('camera')}>Reiniciar misión</button>
-        {control && simulated && <><button className="button button--small" disabled={pending || data.clock.finished} onClick={() => void action('/control', { playing: !data.clock.playing })}>{data.clock.playing ? 'Pausar' : 'Continuar'}</button>
-        <button className="button button--small" disabled={pending} onClick={() => void action('/control', { minute: 30, playing: false })}>Ver detonador de A</button></>}
-        <button className="button button--small" onClick={leave}>Salir</button></div></section>}
+
     {data && !isCameraSession && <div className="connection-warning">Esta sesión pertenece a otra versión. Inicia una sesión de cámara para usar el MVP.</div>}
     {data && isCameraSession && <>
       {!simulated && !data.capabilities.vision && <div className="connection-warning" role="status"><strong>Análisis visual pendiente de activar</strong><p>Ya puedes conectar las cámaras. El servicio de visión debe configurarse en CentroControl para analizar imágenes reales.</p></div>}

@@ -23,8 +23,11 @@
 .button--primary { color: var(--background); background: var(--primary); border-color: var(--primary); }
 .button--primary:hover { color: var(--foreground); }
 .button--small { min-height: 38px; padding: .45rem .75rem; font-size: .73rem; }
+.button--ghost { background: transparent; border-color: var(--border); color: var(--text-secondary); }
+.button--ghost:hover { background: var(--surface); color: var(--foreground); }
 .connection-dot { display: inline-block; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); }
 .connection-dot--live { background: #16a58c; box-shadow: 0 0 0 4px #16a58c14; }
+.header-actions-group { display: flex; align-items: center; gap: 1rem; }
 .live-indicator { display: flex; align-items: center; gap: .65rem; color: var(--text-secondary); font-size: .75rem; white-space: nowrap; }
 .section-kicker { display: block; margin-bottom: .5rem; font-size: .62rem; font-weight: 650; letter-spacing: .13em; color: var(--accent); }
 .session-start { display: grid; grid-template-columns: 1.2fr 1fr; border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: var(--card); box-shadow: var(--card-shadow); }
