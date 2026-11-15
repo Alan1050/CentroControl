@@ -1,11 +1,31 @@
-import { astronautIds } from '../src/mission/protocol.ts';
 import type { Alert, AstronautId, Observation, Profile, VisualAnalysis, VisualResult } from '../src/mission/protocol.ts';
 
-export const cameraProfiles: Profile[] = astronautIds.map((id, i) => ({
-  astronaut_id: id, specialty: ['comunicaciones', 'software', 'ingenieria_sistemas'][i],
-  stress_triggers: 'espacios_reducidos|desorden_visual|alerta_visual', anger_triggers: '',
-  calmers: 'pausa_guiada', min_sleep_h: 0,
-}));
+export const cameraProfiles: Profile[] = [
+  {
+    astronaut_id: 'A',
+    specialty: 'comunicaciones',
+    stress_triggers: 'espacios_reducidos|desorden_visual',
+    anger_triggers: 'murmullos',
+    calmers: 'musica_beethoven|voz_pareja|pausa_guiada',
+    min_sleep_h: 6,
+  },
+  {
+    astronaut_id: 'B',
+    specialty: 'software',
+    stress_triggers: 'desorden_visual|charlas_largas',
+    anger_triggers: 'falta_sueno',
+    calmers: 'ejercicio|pausa_guiada',
+    min_sleep_h: 8,
+  },
+  {
+    astronaut_id: 'C',
+    specialty: 'ingenieria_sistemas',
+    stress_triggers: 'espacios_reducidos|alerta_visual',
+    anger_triggers: 'charlas_largas',
+    calmers: 'musica_suave|pausa_guiada',
+    min_sleep_h: 7,
+  },
+];
 const normal = (summary: string): VisualResult => ({ summary, observations: [] });
 /** Explicit visual simulation. It contains no measurements or emotional predictions. */
 const demo: Record<AstronautId, { minute: number; result: VisualResult }[]> = {

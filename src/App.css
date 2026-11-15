@@ -98,6 +98,18 @@ summary { cursor: pointer; }
 .context-details, .join-details { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--border-subtle); font-size: .68rem; color: var(--text-secondary); }
 .context-details p, .join-details p { margin-top: .7rem; font-size: .68rem; line-height: 1.7; }
 .join-details input, .share-session input { width: 100%; min-width: 0; background: var(--surface); border: 1px solid var(--border); color: var(--foreground); font-size: .7rem; padding: .6rem; border-radius: 4px; margin: .7rem 0; }
+
+/* Enriquecimiento con perfiles de IA y QR para teléfono obligatorio */
+.astronaut-profile-brief { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .75rem; }
+.profile-pill { display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--border-subtle); padding: .2rem .45rem; border-radius: 4px; font-size: .62rem; color: var(--text-secondary); text-transform: capitalize; }
+.impact-box { margin-top: .7rem; padding: .6rem .8rem; background: rgba(22, 165, 140, 0.08); border-left: 3px solid #16a58c; border-radius: 4px; font-size: .73rem; line-height: 1.6; }
+.impact-box strong { color: var(--foreground); font-size: .68rem; display: block; margin-bottom: .2rem; text-transform: uppercase; letter-spacing: .06em; }
+.phone-required-note { font-size: .72rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: .8rem; }
+.qr-container { display: flex; align-items: center; gap: 1rem; padding: .8rem; background: #ffffff; border-radius: .6rem; border: 1px solid var(--border); margin-top: .6rem; }
+.qr-image { display: block; width: 130px; height: 130px; border-radius: 4px; flex-shrink: 0; }
+.qr-text { display: flex; flex-direction: column; gap: .5rem; }
+.qr-text span { font-size: .75rem; color: #1e293b; font-weight: 550; line-height: 1.4; }
+.qr-text small { font-size: .65rem; color: #64748b; }
 .inline-error { margin-top: .7rem; font-size: .7rem; color: #ad5f1a; }
 .event-history { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: .8rem; background: var(--card); }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }

@@ -1,5 +1,5 @@
 import { interventionText, sourceLabels, stateLabels, triggerLabels } from '../mission/protocol.ts';
-import type { Alert, CrewStatus, ResponseAction } from '../mission/protocol.ts';
+import type { Alert, CrewStatus, ResponseAction, Trigger } from '../mission/protocol.ts';
 
 function AlertContent({ alert, pending, onRespond }: { alert: Alert; pending: boolean; onRespond?: (id: string, action: ResponseAction) => void }) {
   const suggestion = alert.intervention ? interventionText[alert.intervention.item] : null;
@@ -20,16 +20,51 @@ export default function Card({ crew, pending, onRespond, joinLink, connected, se
     <div className="astronaut-card__heading"><div className="astronaut-card__avatar" aria-hidden="true">{crew.id}</div>
       <div><p className="astronaut-card__number">{crew.profile.specialty.replaceAll('_', ' ')}</p><h2>Astronauta {crew.id}</h2></div>
       <span className="status-pill">{!connected ? 'Conexión interrumpida' : latest?.source === 'simulador' ? 'Escena simulada' : latest ? 'Observación visual' : 'Esperando cámara'}</span></div>
-    <div className="device-status"><span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />Ojos: {deviceOnline ? crew.cameraStatus === 'live' ? 'cámara activa' : 'dispositivo conectado' : 'sin dispositivo conectado'}</div>
-    <section className="visual-scene"><span className="section-kicker">ÚLTIMA OBSERVACIÓN</span><p>{latest?.summary || 'Conecta ojos5 e inicia el análisis del entorno para recibir observaciones.'}</p>
+    
+    <div className="astronaut-profile-brief">
+      <span className="profile-pill">Especialidad: {crew.profile.specialty.replaceAll('_', ' ')}</span>
+      <span className="profile-pill">Sensible a: {crew.profile.stress_triggers.split('|').map(t => triggerLabels[t as Trigger] || t).join(', ')}</span>
+      <span className="profile-pill">Calma: {crew.profile.calmers.split('|').map(c => c.replace('_', ' ')).join(', ')}</span>
+    </div>
+
+    <div className="device-status"><span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />Ojos móvil: {deviceOnline ? crew.cameraStatus === 'live' ? 'teléfono conectado y activo' : 'teléfono conectado' : 'esperando escaneo con smartphone'}</div>
+    
+    <section className="visual-scene"><span className="section-kicker">ÚLTIMA OBSERVACIÓN</span><p>{latest?.summary || 'Escanea el código QR con el smartphone del astronauta para iniciar la observación del entorno.'}</p>
+      {latest?.impact && <div className="impact-box"><strong>Evaluación contextual según perfil (IA):</strong><p>{latest.impact}</p></div>}
       {latest && <small>{new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {sourceLabels[latest.source]}</small>}</section>
+    
     <div className="reported-state"><span>Estado comunicado por el astronauta</span><strong>{crew.selfReport ? stateLabels[crew.selfReport.state] : 'Sin confirmar'}</strong>
       {crew.selfReport && <small>{new Date(crew.selfReport.timestamp).toLocaleTimeString('es-MX')}</small>}</div>
     {crew.quality === 'desactualizada' && <p className="inline-error">No hay observaciones recientes. Se conserva el último entorno analizado.</p>}
     {active.length ? <div className="crew-alerts">{active.map(a => <AlertContent key={a.id} alert={a} pending={pending} onRespond={onRespond} />)}</div>
       : latest && <p className="camera-quiet">Sin posibles detonadores en la última observación.</p>}
     {crew.visualAnalyses.length > 0 && <details className="context-details"><summary>Observaciones anteriores ({crew.visualAnalyses.length})</summary>{crew.visualAnalyses.slice(-8).toReversed().map(a => <p key={a.id}><strong>{new Date(a.timestamp).toLocaleTimeString('es-MX')}</strong> · {a.summary}</p>)}</details>}
-    {joinLink && <details className="join-details"><summary>Conectar ojos5 · Astronauta {crew.id}</summary><p>Abre el enlace en el teléfono o computadora del astronauta.</p>
-      <input aria-label={`Enlace del astronauta ${crew.id}`} readOnly value={joinLink} onFocus={e => e.currentTarget.select()} /><a className="button button--small" href={joinLink} target="_blank" rel="noreferrer">Abrir ojos5</a></details>}
+    
+    {joinLink && <details className="join-details" open><summary>📱 Conectar teléfono · Astronauta {crew.id}</summary>
+      <p className="phone-required-note"><strong>Cámara exclusiva para smartphone:</strong> Escanea este código QR con la cámara de tu teléfono para abrir Ojos y transmitir el entorno.</p>
+      <div className="qr-container">
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=130x130&margin=2&data=${encodeURIComponent(joinLink)}`}
+          alt={`Código QR para teléfono de Astronauta ${crew.id}`}
+          width="130"
+          height="130"
+          className="qr-image"
+          loading="lazy"
+        />
+        <div className="qr-text">
+          <span>Apunta con la cámara de tu smartphone</span>
+          <button
+            type="button"
+            className="button button--small"
+            onClick={() => {
+              void navigator.clipboard.writeText(joinLink);
+              alert(`Enlace copiado para el teléfono del Astronauta ${crew.id}.`);
+            }}
+          >
+            Copiar enlace para el móvil
+          </button>
+        </div>
+      </div>
+    </details>}
   </article>;
 }

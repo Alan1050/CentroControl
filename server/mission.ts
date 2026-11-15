@@ -23,7 +23,7 @@ export type MissionEvent = {
 export type Dependencies = {
   store: Store; now?: () => number;
   predict?: (id: AstronautId, readings: Reading[], profile: FullProfile) => Promise<Prediction>;
-  vision?: (image: string) => Promise<VisualResult>;
+  vision?: (image: string, profile?: Profile) => Promise<VisualResult>;
 };
 const hash = (s: string) => createHash('sha256').update(s).digest('hex');
 const iso = (n: number) => new Date(n).toISOString();
@@ -273,11 +273,16 @@ export class MissionService {
         const previous = events.filter(e => e.kind === 'visual_analysis' && e.astronautId === aid).at(-1);
         if (previous && this.now() - previous.at < 15000) throw new HttpError(429, 'Espera unos segundos antes de analizar otra imagen.');
         if (typeof body.image !== 'string' || body.image.length > 900000 || !/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(body.image)) throw new HttpError(400, 'Envía un fotograma JPEG de menos de 650 KB.');
-        const result = await this.deps.vision(body.image);
+        const profile = session.profiles.find(p => p.astronaut_id === aid);
+        const result = await this.deps.vision(body.image, profile);
         if (typeof result.summary !== 'string' || !result.summary.trim() || !Array.isArray(result.observations) || result.observations.length > 3
           || result.observations.some(o => !visualTriggers.includes(o.trigger) || !Number.isFinite(o.confidence) || o.confidence < 0 || o.confidence > 1 || typeof o.evidence !== 'string')) throw new HttpError(502, 'El análisis visual devolvió datos inválidos.');
-        const cleanResult: VisualResult = { summary: result.summary.slice(0, 500),
-          observations: result.observations.map(o => ({ trigger: o.trigger, confidence: o.confidence, evidence: o.evidence.slice(0, 400) })) };
+        const cleanResult: VisualResult = {
+          summary: result.summary.slice(0, 500),
+          ...(result.impact ? { impact: String(result.impact).slice(0, 500) } : {}),
+          ...(result.suggestion ? { suggestion: String(result.suggestion).slice(0, 500) } : {}),
+          observations: result.observations.map(o => ({ trigger: o.trigger, confidence: o.confidence, evidence: o.evidence.slice(0, 400) })),
+        };
         await this.append(id, 'visual_analysis', { result: cleanResult }, aid);
       } else if (route === 'context') {
         const trigger = body.trigger as Trigger; const evidence = String(body.evidence || 'Registrado por el astronauta.').slice(0, 400);

@@ -38,6 +38,8 @@ export type Profile = {
 };
 export type VisualResult = {
   summary: string;
+  impact?: string;
+  suggestion?: string;
   observations: { trigger: VisualTrigger; confidence: number; evidence: string }[];
 };
 export type VisualAnalysis = VisualResult & {
