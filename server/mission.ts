@@ -3,7 +3,7 @@ import demo from './data/demo.json' with { type: 'json' };
 import { astronautIds, stateLabels, triggerLabels, visualTriggers } from '../src/mission/protocol.ts';
 import { cameraDemo, cameraProfiles, visualEpisodes } from './camera-mission.ts';
 import type { Alert, AstronautId, CrewStatus, Intervention, MissionSnapshot, Observation,
-  Prediction, Profile, Reading, ResponseAction, SessionCreated, Trigger, VisualAnalysis, VisualResult } from '../src/mission/protocol.ts';
+  Prediction, Profile, Reading, ResponseAction, SessionCreated, Trigger, VisualAnalysis, VisualResult, VisualTrigger } from '../src/mission/protocol.ts';
 import type { Store } from './store.ts';
 
 export class HttpError extends Error {
@@ -24,6 +24,12 @@ export type Dependencies = {
   store: Store; now?: () => number;
   predict?: (id: AstronautId, readings: Reading[], profile: FullProfile) => Promise<Prediction>;
   vision?: (image: string, profile?: Profile) => Promise<VisualResult>;
+  clientAi?: {
+    enabled: boolean;
+    provider: 'gemini' | 'none';
+    apiKey?: string;
+    model?: string;
+  };
 };
 const hash = (s: string) => createHash('sha256').update(s).digest('hex');
 const iso = (n: number) => new Date(n).toISOString();
@@ -133,7 +139,8 @@ export class MissionService {
     await this.deps.store.put(`sessions/${id}/keys`, keys);
     await this.deps.store.put('sessions/active-session', { id, keys });
     return { sessionId: id, controlKey: keys.control, viewerKey: keys.viewer,
-      crewKeys: Object.fromEntries(astronautIds.map(a => [a, keys[a]])) as Record<AstronautId, string> };
+      crewKeys: Object.fromEntries(astronautIds.map(a => [a, keys[a]])) as Record<AstronautId, string>,
+      clientAi: this.deps.clientAi };
   }
   async getOrCreateActive(): Promise<SessionCreated> {
     const active = await this.deps.store.get<{ id: string; keys: Record<string, string> }>('sessions/active-session');
@@ -144,7 +151,8 @@ export class MissionService {
           sessionId: active.id,
           controlKey: active.keys.control,
           viewerKey: active.keys.viewer,
-          crewKeys: Object.fromEntries(astronautIds.map(a => [a, active.keys[a]])) as Record<AstronautId, string>
+          crewKeys: Object.fromEntries(astronautIds.map(a => [a, active.keys[a]])) as Record<AstronautId, string>,
+          clientAi: this.deps.clientAi,
         };
       }
     }
@@ -285,21 +293,47 @@ export class MissionService {
         if (typeof body.state !== 'string' || !Object.hasOwn(stateLabels, body.state)) throw new HttpError(400, 'Estado comunicado no válido.');
         await this.append(id, 'self_report', { state: body.state }, aid);
       } else if (route === 'vision') {
-        if (!this.deps.vision) throw new HttpError(503, 'El análisis visual todavía no está configurado en el servidor.');
         if (session.mode === 'camera-demo') throw new HttpError(409, 'Esta demo es simulada. Inicia una sesión de cámara para analizar imágenes reales.');
         const previous = events.filter(e => e.kind === 'visual_analysis' && e.astronautId === aid).at(-1);
-        if (previous && this.now() - previous.at < 15000) throw new HttpError(429, 'Espera unos segundos antes de analizar otra imagen.');
-        if (typeof body.image !== 'string' || body.image.length > 900000 || !/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(body.image)) throw new HttpError(400, 'Envía un fotograma JPEG de menos de 650 KB.');
-        const profile = session.profiles.find(p => p.astronaut_id === aid);
-        const result = await this.deps.vision(body.image, profile);
-        if (typeof result.summary !== 'string' || !result.summary.trim() || !Array.isArray(result.observations) || result.observations.length > 3
-          || result.observations.some(o => !visualTriggers.includes(o.trigger) || !Number.isFinite(o.confidence) || o.confidence < 0 || o.confidence > 1 || typeof o.evidence !== 'string')) throw new HttpError(502, 'El análisis visual devolvió datos inválidos.');
-        const cleanResult: VisualResult = {
-          summary: result.summary.slice(0, 500),
-          ...(result.impact ? { impact: String(result.impact).slice(0, 500) } : {}),
-          ...(result.suggestion ? { suggestion: String(result.suggestion).slice(0, 500) } : {}),
-          observations: result.observations.map(o => ({ trigger: o.trigger, confidence: o.confidence, evidence: o.evidence.slice(0, 400) })),
-        };
+        if (previous && this.now() - previous.at < 10000) throw new HttpError(429, 'Espera unos segundos antes de analizar otra imagen.');
+        let cleanResult: VisualResult;
+        if (body.result && typeof body.result === 'object') {
+          const r = body.result as Record<string, unknown>;
+          if (typeof r.summary !== 'string' || !r.summary.trim() || !Array.isArray(r.observations) || r.observations.length > 3
+            || r.observations.some((o: unknown) => {
+              if (!o || typeof o !== 'object') return true;
+              const obs = o as Record<string, unknown>;
+              return !visualTriggers.includes(obs.trigger as VisualTrigger) || !Number.isFinite(obs.confidence) || Number(obs.confidence) < 0 || Number(obs.confidence) > 1 || typeof obs.evidence !== 'string';
+            })) throw new HttpError(400, 'El resultado de Edge AI contiene datos inválidos.');
+          cleanResult = {
+            summary: String(r.summary).slice(0, 500),
+            ...(r.impact ? { impact: String(r.impact).slice(0, 500) } : {}),
+            ...(r.suggestion ? { suggestion: String(r.suggestion).slice(0, 500) } : {}),
+            observations: (r.observations as Array<Record<string, unknown>>).map(o => ({
+              trigger: o.trigger as VisualTrigger,
+              confidence: Number(o.confidence),
+              evidence: String(o.evidence).slice(0, 400),
+            })),
+            processedOn: 'edge_device',
+            ...(typeof r.latencyMs === 'number' && Number.isFinite(r.latencyMs) ? { latencyMs: r.latencyMs } : {}),
+          };
+        } else if (typeof body.image === 'string') {
+          if (!this.deps.vision) throw new HttpError(503, 'El análisis visual todavía no está configurado en el servidor.');
+          if (body.image.length > 900000 || !/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(body.image)) throw new HttpError(400, 'Envía un fotograma JPEG de menos de 650 KB.');
+          const profile = session.profiles.find(p => p.astronaut_id === aid);
+          const result = await this.deps.vision(body.image, profile);
+          if (typeof result.summary !== 'string' || !result.summary.trim() || !Array.isArray(result.observations) || result.observations.length > 3
+            || result.observations.some(o => !visualTriggers.includes(o.trigger) || !Number.isFinite(o.confidence) || o.confidence < 0 || o.confidence > 1 || typeof o.evidence !== 'string')) throw new HttpError(502, 'El análisis visual devolvió datos inválidos.');
+          cleanResult = {
+            summary: result.summary.slice(0, 500),
+            ...(result.impact ? { impact: String(result.impact).slice(0, 500) } : {}),
+            ...(result.suggestion ? { suggestion: String(result.suggestion).slice(0, 500) } : {}),
+            observations: result.observations.map(o => ({ trigger: o.trigger, confidence: o.confidence, evidence: o.evidence.slice(0, 400) })),
+            processedOn: 'server',
+          };
+        } else {
+          throw new HttpError(400, 'Se requiere un resultado de Edge AI o un fotograma para análisis.');
+        }
         await this.append(id, 'visual_analysis', { result: cleanResult }, aid);
       } else if (route === 'context') {
         const trigger = body.trigger as Trigger; const evidence = String(body.evidence || 'Registrado por el astronauta.').slice(0, 400);

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { fetchActiveSession, sendAction } from './client.ts';
+import { runEdgeVision } from './client-ai.ts';
 import { connectionFromFragment, interventionText, stateLabels, triggerLabels } from './protocol.ts';
-import type { AstronautId, Connection, MentalState, ResponseAction, SessionCreated } from './protocol.ts';
+import type { AstronautId, Connection, MentalState, ResponseAction, SessionCreated, VisualResult } from './protocol.ts';
 import { useMission } from './useMission.ts';
 import './mission-overlay.css';
 
@@ -20,6 +21,8 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
   const [localError, setLocalError] = useState('');
   const [expanded, setExpanded] = useState(true);
   const [automatic, setAutomatic] = useState(false);
+  const [isProcessingAi, setIsProcessingAi] = useState(false);
+  const [aiStatusText, setAiStatusText] = useState('');
   const { data, error, pending, action } = useMission(connection);
   const crew = data?.crew.find(c => c.id === connection?.astronautId);
   const latest = crew?.visualAnalyses.at(-1);
@@ -100,34 +103,78 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
     const sample = async () => {
       if (running || document.visibilityState === 'hidden') return;
       running = true;
+      setIsProcessingAi(true);
       try {
         const image = await capture();
+        if (cancelled) return;
+
+        let result: VisualResult | null = null;
+        if (activeSession?.clientAi?.apiKey) {
+          try {
+            setAiStatusText('Ejecutando Edge AI en smartphone…');
+            result = await runEdgeVision(image, crew?.profile, {
+              apiKey: activeSession.clientAi.apiKey,
+              model: activeSession.clientAi.model,
+            });
+            setAiStatusText(`Edge AI completado (${result.latencyMs ?? 0} ms) · Transmitiendo telemetría…`);
+          } catch (edgeErr) {
+            console.warn('Fallo en Edge AI local, recurriendo al servidor:', edgeErr);
+          }
+        }
+
         if (!cancelled) {
-          await sendAction(connection, '/vision', { astronautId: connection.astronautId, image });
+          if (result) {
+            // Envía únicamente la telemetría procesada (sin imagen pesada a la Tierra)
+            await sendAction(connection, '/vision', { astronautId: connection.astronautId, result });
+          } else {
+            await sendAction(connection, '/vision', { astronautId: connection.astronautId, image });
+          }
           setLocalError('');
         }
       } catch (e) {
         if (!cancelled) setLocalError(e instanceof Error ? e.message : 'No se pudo observar el entorno.');
       } finally {
         running = false;
+        setIsProcessingAi(false);
       }
     };
     void sample();
     const timer = setInterval(() => void sample(), 20000);
     return () => { cancelled = true; clearInterval(timer); };
-  }, [automatic, cameraStatus, data?.capabilities.vision, cameraSession, connection, capture]);
+  }, [automatic, cameraStatus, data?.capabilities.vision, cameraSession, connection, capture, activeSession, crew?.profile]);
 
   function respond(response: ResponseAction) {
     if (alert && crew) void action('/response', { astronautId: crew.id, alertId: alert.id, action: response });
   }
 
   async function analyze() {
+    if (!connection?.astronautId) return;
     setLocalError('');
+    setIsProcessingAi(true);
+    setAiStatusText('Ejecutando Edge AI en smartphone…');
     try {
       const image = await capture();
-      await action('/vision', { astronautId: connection?.astronautId, image });
+      let result: VisualResult | null = null;
+      if (activeSession?.clientAi?.apiKey) {
+        try {
+          result = await runEdgeVision(image, crew?.profile, {
+            apiKey: activeSession.clientAi.apiKey,
+            model: activeSession.clientAi.model,
+          });
+          setAiStatusText(`Edge AI completado (${result.latencyMs ?? 0} ms) · Transmitiendo telemetría…`);
+        } catch (edgeErr) {
+          console.warn('Fallo en Edge AI local, recurriendo al servidor:', edgeErr);
+        }
+      }
+      if (result) {
+        await action('/vision', { astronautId: connection.astronautId, result });
+      } else {
+        await action('/vision', { astronautId: connection.astronautId, image });
+      }
     } catch (e) {
       setLocalError(e instanceof Error ? e.message : 'No se pudo capturar el entorno.');
+    } finally {
+      setIsProcessingAi(false);
     }
   }
 
@@ -203,15 +250,32 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
 
           {crew && (
             <>
+              <div className="edge-ai-indicator">
+                <span className="edge-tag">🛰️ Edge AI On-Device</span>
+                <small>La IA procesa en este teléfono y solo transmite telemetría ligera a la Tierra</small>
+              </div>
+
+              {isProcessingAi && (
+                <div className="edge-processing-banner" role="status">
+                  ⚙️ {aiStatusText || 'Analizando entorno en el dispositivo móvil…'}
+                </div>
+              )}
+
               <p className="mission-hud__origin">
                 {simulated ? 'Escenas simuladas. La imagen de tu cámara no se analiza en esta demo.' : 'Cámara de smartphone · Observación del entorno'}
               </p>
               <section className="mission-hud__scene" aria-live="polite">
                 <h2>Lo que observa la IA</h2>
                 <p>{latest?.summary || 'Esperando el primer análisis del entorno.'}</p>
+                {latest?.impact && (
+                  <p className="hud-impact"><strong>Impacto:</strong> {latest.impact}</p>
+                )}
+                {latest?.suggestion && (
+                  <p className="hud-suggestion"><strong>Sugerencia:</strong> {latest.suggestion}</p>
+                )}
                 {latest && (
                   <small>
-                    {new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {latest.source === 'simulador' ? 'Simulación' : 'Observación visual'}
+                    {new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {latest.processedOn === 'edge_device' ? `🛰️ Procesado en móvil (${latest.latencyMs ? `${latest.latencyMs}ms` : 'Edge AI'})` : (latest.source === 'simulador' ? 'Simulación' : 'Observación visual')}
                   </small>
                 )}
               </section>

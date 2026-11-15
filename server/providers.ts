@@ -56,6 +56,12 @@ export function providers(env: Record<string, string | undefined>, request = fet
   } else if (env.GEMINI_API_KEY) {
     const rawModel = env.GEMINI_MODEL?.trim();
     const defaultModel = (!rawModel || rawModel.includes('2.5') || rawModel.includes('1.5') || rawModel.includes('2.0')) ? 'gemini-3.8-flash' : rawModel;
+    configured.clientAi = {
+      enabled: true,
+      provider: 'gemini',
+      apiKey: env.GEMINI_API_KEY,
+      model: defaultModel,
+    };
     configured.vision = async (image, profile) => {
       const profileInfo = profile
         ? `Tripulante observado: Astronauta ${profile.astronaut_id} (Especialidad: ${profile.specialty.replaceAll('_', ' ')}). Sensibilidades conocidas de misión: ${profile.stress_triggers.replaceAll('|', ', ')}. Estrategias de calma registradas: ${profile.calmers.replaceAll('|', ', ')}.`

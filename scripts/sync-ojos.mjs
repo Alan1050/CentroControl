@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const mapping = [
-  ...['protocol.ts', 'client.ts', 'useMission.ts', 'MissionOverlay.tsx', 'mission-overlay.css'].map(name => [resolve(root, 'src/mission', name), resolve(root, '../ojos5/src/mission', name)]),
+  ...['protocol.ts', 'client.ts', 'client-ai.ts', 'useMission.ts', 'MissionOverlay.tsx', 'mission-overlay.css'].map(name => [resolve(root, 'src/mission', name), resolve(root, '../ojos5/src/mission', name)]),
   [resolve(root, '../ojos5/src/camera/browser-camera.ts'), resolve(root, 'src/camera/browser-camera.ts')],
 ];
 for (const [source, destination] of mapping) {

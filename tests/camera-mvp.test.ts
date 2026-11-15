@@ -144,3 +144,28 @@ test('GET /api/active-session returns persistent active mission for seamless mob
   assert.ok(data.crewKeys.B);
   assert.ok(data.crewKeys.C);
 });
+test('Edge AI telemetry from mobile device sends only structured result without image', async () => {
+  const store = new MemoryStore();
+  const service = new MissionService({ store });
+  const k = await service.create({});
+  const edgeResult = {
+    summary: 'Panel de comunicaciones despejado con checklist verificado.',
+    impact: 'Bajo nivel de estrés, tarea en rango operativo.',
+    suggestion: 'Continuar con el procedimiento estándar.',
+    observations: [{ trigger: 'espacios_reducidos' as const, confidence: 0.85, evidence: 'Cabina estrecha pero ordenada.' }],
+    processedOn: 'edge_device' as const,
+    latencyMs: 450,
+  };
+  const snapshot = await service.action(k.sessionId, k.crewKeys.A, 'vision', {
+    astronautId: 'A',
+    result: edgeResult,
+  });
+  const astronautA = snapshot.crew.find(c => c.id === 'A')!;
+  const latestAnalysis = astronautA.visualAnalyses.at(-1)!;
+  assert.equal(latestAnalysis.summary, edgeResult.summary);
+  assert.equal(latestAnalysis.impact, edgeResult.impact);
+  assert.equal(latestAnalysis.processedOn, 'edge_device');
+  assert.equal(latestAnalysis.latencyMs, 450);
+  assert.equal(astronautA.alerts.length, 1);
+  assert.equal(astronautA.alerts[0].triggers[0].trigger, 'espacios_reducidos');
+});

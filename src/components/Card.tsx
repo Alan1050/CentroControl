@@ -27,11 +27,31 @@ export default function Card({ crew, pending, onRespond, joinLink, connected, se
       <span className="profile-pill">Calma: {crew.profile.calmers.split('|').map(c => c.replace('_', ' ')).join(', ')}</span>
     </div>
 
-    <div className="device-status"><span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />Ojos móvil: {deviceOnline ? crew.cameraStatus === 'live' ? 'teléfono conectado y activo' : 'teléfono conectado' : 'esperando escaneo con smartphone'}</div>
+    <div className="device-status">
+      <span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />
+      Ojos móvil: {deviceOnline ? (
+        latest?.processedOn === 'edge_device'
+          ? `activo · 🛰️ Edge AI (${latest.latencyMs ? `${latest.latencyMs}ms` : 'en móvil'})`
+          : crew.cameraStatus === 'live' ? 'teléfono conectado y activo' : 'teléfono conectado'
+      ) : 'esperando escaneo con smartphone'}
+    </div>
     
-    <section className="visual-scene"><span className="section-kicker">ÚLTIMA OBSERVACIÓN</span><p>{latest?.summary || 'Escanea el código QR con el smartphone del astronauta para iniciar la observación del entorno.'}</p>
+    <section className="visual-scene">
+      <div className="scene-header">
+        <span className="section-kicker">ÚLTIMA OBSERVACIÓN</span>
+        {latest?.processedOn === 'edge_device' && (
+          <span className="edge-badge">🛰️ Edge AI (Traje / Móvil)</span>
+        )}
+      </div>
+      <p>{latest?.summary || 'Escanea el código QR con el smartphone del astronauta para iniciar la observación del entorno.'}</p>
       {latest?.impact && <div className="impact-box"><strong>Evaluación contextual según perfil (IA):</strong><p>{latest.impact}</p></div>}
-      {latest && <small>{new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {sourceLabels[latest.source]}</small>}</section>
+      {latest?.suggestion && <div className="suggestion-box"><strong>Procedimiento sugerido:</strong><p>{latest.suggestion}</p></div>}
+      {latest && (
+        <small>
+          {new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {latest.processedOn === 'edge_device' ? `🛰️ Telemetría recibida de móvil (${latest.latencyMs ? `${latest.latencyMs}ms` : 'Edge AI'}) · Sin transferir video a la Tierra` : sourceLabels[latest.source]}
+        </small>
+      )}
+    </section>
     
     <div className="reported-state"><span>Estado comunicado por el astronauta</span><strong>{crew.selfReport ? stateLabels[crew.selfReport.state] : 'Sin confirmar'}</strong>
       {crew.selfReport && <small>{new Date(crew.selfReport.timestamp).toLocaleTimeString('es-MX')}</small>}</div>

@@ -41,6 +41,8 @@ export type VisualResult = {
   impact?: string;
   suggestion?: string;
   observations: { trigger: VisualTrigger; confidence: number; evidence: string }[];
+  processedOn?: 'edge_device' | 'server';
+  latencyMs?: number;
 };
 export type VisualAnalysis = VisualResult & {
   id: string; astronautId: AstronautId; timestamp: string; source: 'vision' | 'simulador';
@@ -66,6 +68,12 @@ export type MissionSnapshot = {
 export type Connection = { apiUrl: string; sessionId: string; key: string; astronautId?: AstronautId };
 export type SessionCreated = {
   sessionId: string; controlKey: string; viewerKey: string; crewKeys: Record<AstronautId, string>;
+  clientAi?: {
+    enabled: boolean;
+    provider: 'gemini' | 'none';
+    apiKey?: string;
+    model?: string;
+  };
 };
 export const stateLabels: Record<MentalState, string> = {
   calma: 'Calma', estres: 'Estrés', ira: 'Ira', fatiga: 'Fatiga', alegria: 'Alegría',
