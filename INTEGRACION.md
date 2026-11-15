@@ -69,8 +69,14 @@ Para publicar desde el navegador, `npm run package:source` genera `../.release/u
 
 Configura estas variables en Netlify con alcance **Functions** y vuelve a desplegar:
 
-- `OPENAI_API_KEY`: credencial privada del proveedor.
-- `VISION_MODEL`: modelo que admita imágenes y Structured Outputs en Responses.
+- Opción recomendada (Google AI / Gemini - gratuita):
+  - `GEMINI_API_KEY`: clave obtenida en Google AI Studio (https://aistudio.google.com/app/apikey).
+  - `GEMINI_MODEL`: modelo de visión (por defecto `gemini-2.5-flash`).
+- Opción alternativa (OpenAI):
+  - `OPENAI_API_KEY`: credencial privada del proveedor.
+  - `VISION_MODEL`: modelo que admita imágenes y Structured Outputs en Responses (ej. `gpt-4o-mini`).
+- Modo de prueba sin API externa:
+  - `MOCK_VISION`: `true` para activar el análisis visual simulado de fotogramas sin credenciales externas.
 - `API_ALLOWED_ORIGINS`: opcional, lista separada por comas para los clientes web externos.
 
 Sin las dos primeras variables la cámara sigue funcionando, se puede reproducir la demo visual y la interfaz informa que el análisis real está pendiente de activación. La app no introduce resultados ficticios para ocultar esa falta de configuración.

@@ -97,6 +97,35 @@ test('visual provider uses structured scene evidence, disables response storage 
     ] }) }] }] }));
   await assert.rejects(invalid.vision!(image), /inválidos/);
 });
+test('Google AI (Gemini) visual provider formats request and parses structured output', async () => {
+  let requestUrl = '';
+  let requestBody: Record<string, unknown> = {};
+  const p = providers({ GEMINI_API_KEY: 'test-gemini-key' }, async (url, init) => {
+    requestUrl = String(url);
+    requestBody = JSON.parse(init?.body as string);
+    return Response.json({
+      candidates: [{
+        content: {
+          parts: [{ text: JSON.stringify(scene) }]
+        }
+      }]
+    });
+  });
+  assert.ok(p.vision, 'vision provider should be enabled with GEMINI_API_KEY');
+  const res = await p.vision!(image);
+  assert.deepEqual(res, scene);
+  assert.ok(requestUrl.includes('generativelanguage.googleapis.com'));
+  assert.ok(requestUrl.includes('test-gemini-key'));
+  assert.ok(requestBody.contents);
+});
+test('mock visual provider provides fallback observations when enabled', async () => {
+  const p = providers({ MOCK_VISION: 'true' });
+  assert.ok(p.vision, 'vision provider should be enabled with MOCK_VISION');
+  const res1 = await p.vision!(image);
+  assert.ok(res1.summary);
+  const res2 = await p.vision!(image);
+  assert.equal(res2.observations[0]?.trigger, 'espacios_reducidos');
+});
 test('HTTP camera-only session and reported state work without any inference configuration', async () => {
   const api = createApi({ store: new MemoryStore() });
   const create = await api(new Request('https://control.example/api/sessions', { method: 'POST', body: '{}' }));
