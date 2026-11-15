@@ -71,7 +71,7 @@ Configura estas variables en Netlify con alcance **Functions** y vuelve a desple
 
 - Opción recomendada (Google AI / Gemini - gratuita):
   - `GEMINI_API_KEY`: clave obtenida en Google AI Studio (https://aistudio.google.com/app/apikey).
-  - `GEMINI_MODEL`: modelo de visión (por defecto `gemini-2.5-flash`).
+  - `GEMINI_MODEL`: modelo de visión (por defecto `gemini-1.5-flash`).
 - Opción alternativa (OpenAI):
   - `OPENAI_API_KEY`: credencial privada del proveedor.
   - `VISION_MODEL`: modelo que admita imágenes y Structured Outputs en Responses (ej. `gpt-4o-mini`).
