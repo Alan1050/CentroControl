@@ -134,3 +134,13 @@ test('HTTP camera-only session and reported state work without any inference con
     headers: { Authorization: `Bearer ${k.crewKeys.A}` }, body: JSON.stringify({ astronautId: 'A', state: 'calma' }) }));
   assert.equal(report.status, 200); assert.equal((await report.json()).crew[0].selfReport.state, 'calma');
 });
+test('GET /api/active-session returns persistent active mission for seamless mobile selection', async () => {
+  const api = createApi({ store: new MemoryStore() });
+  const active = await api(new Request('https://control.example/api/active-session'));
+  assert.equal(active.status, 200);
+  const data = await active.json();
+  assert.ok(data.sessionId);
+  assert.ok(data.crewKeys.A);
+  assert.ok(data.crewKeys.B);
+  assert.ok(data.crewKeys.C);
+});

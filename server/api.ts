@@ -18,6 +18,7 @@ export function createApi(deps: Dependencies, allowedOrigins: string[] = []) {
       const path = new URL(request.url).pathname.replace(/^\/\.netlify\/functions\/mission/, '/api').replace(/\/$/, '');
       if (path === '/api/health' && request.method === 'GET') return json({ version: 1, status: 'ok',
         capabilities: { vision: !!deps.vision, sensors: !!deps.predict } });
+      if (path === '/api/active-session' && request.method === 'GET') return json(await service.getOrCreateActive());
       let body: Record<string, unknown> = {};
       if (request.method === 'POST') {
         if (Number(request.headers.get('Content-Length')) > 1000000) throw new HttpError(413, 'La petición es demasiado grande.');

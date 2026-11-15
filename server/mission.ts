@@ -124,14 +124,31 @@ export class MissionService {
     if (mode === 'live' && !this.deps.predict) throw new HttpError(503, 'El servicio de inferencia de sensores todavía no está configurado.');
     const seconds = body.secondsPerMinute ?? 3;
     if (typeof seconds !== 'number' || !Number.isFinite(seconds) || seconds < 1 || seconds > 60) throw new HttpError(400, 'La velocidad debe estar entre 1 y 60 segundos por minuto simulado.');
-    const id = randomBytes(12).toString('base64url');
+    const id = typeof body.id === 'string' && /^[\w-]{3,80}$/.test(body.id) ? body.id : randomBytes(12).toString('base64url');
     const keys = Object.fromEntries(['control', 'viewer', ...astronautIds].map(role => [role, randomBytes(32).toString('base64url')]));
     const session: Session = { id, createdAt: this.now(), mode: mode as Session['mode'], secondsPerMinute: seconds,
       hashes: Object.fromEntries(Object.entries(keys).map(([k, v]) => [k, hash(v)])),
       profiles: mode === 'live' ? validProfiles(body.profiles) : String(mode).startsWith('camera') ? cameraProfiles as FullProfile[] : profiles.filter(p => astronautIds.includes(p.astronaut_id)) };
     await this.deps.store.put(`sessions/${id}/config`, session);
+    await this.deps.store.put(`sessions/${id}/keys`, keys);
+    await this.deps.store.put('sessions/active-session', { id, keys });
     return { sessionId: id, controlKey: keys.control, viewerKey: keys.viewer,
       crewKeys: Object.fromEntries(astronautIds.map(a => [a, keys[a]])) as Record<AstronautId, string> };
+  }
+  async getOrCreateActive(): Promise<SessionCreated> {
+    const active = await this.deps.store.get<{ id: string; keys: Record<string, string> }>('sessions/active-session');
+    if (active?.id && active.keys?.control) {
+      const config = await this.deps.store.get<Session>(`sessions/${active.id}/config`);
+      if (config) {
+        return {
+          sessionId: active.id,
+          controlKey: active.keys.control,
+          viewerKey: active.keys.viewer,
+          crewKeys: Object.fromEntries(astronautIds.map(a => [a, active.keys[a]])) as Record<AstronautId, string>
+        };
+      }
+    }
+    return this.create({ mode: 'camera', id: 'mission-active' });
   }
   async load(id: string, key: string) {
     if (!/^[\w-]{12,80}$/.test(id)) throw new HttpError(404, 'Sesión desconocida.');

@@ -4,7 +4,7 @@ import Card from './components/Card.tsx';
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import AstronautScreen from './components/AstronautScreen.tsx';
-import { createSession } from './mission/client.ts';
+import { createSession, fetchActiveSession } from './mission/client.ts';
 import { connectionFromFragment, normalizeApiUrl, sessionLink, sourceLabels, triggerLabels } from './mission/protocol.ts';
 import type { AstronautId, Connection, SessionCreated } from './mission/protocol.ts';
 import { useMission } from './mission/useMission.ts';
@@ -46,7 +46,7 @@ function Dashboard() {
       void (async () => {
         try {
           const base = normalizeApiUrl(apiUrl);
-          const keys = await createSession(base, 'camera');
+          const keys = await fetchActiveSession(base).catch(() => createSession(base, 'camera'));
           if (active) {
             connect({ connection: { apiUrl: base, sessionId: keys.sessionId, key: keys.controlKey }, keys });
           }
@@ -63,7 +63,7 @@ function Dashboard() {
   const alerts = data?.crew.flatMap(c => c.alerts).sort((a, b) => Date.parse(b.startedAt) - Date.parse(a.startedAt)) || [];
   const active = alerts.filter(a => a.active); const control = data?.role === 'control';
   function crewLink(id: AstronautId) {
-    return saved?.keys ? sessionLink(`${window.location.origin}/ojos`, { ...saved.connection, key: saved.keys.crewKeys[id], astronautId: id }) : undefined;
+    return `${window.location.origin}/ojos#astronautId=${id}`;
   }
   return <div className="app-shell"><Header /><main className="main-content">
     <div className="page-heading"><div><p className="eyebrow"><span /> MISIÓN · ASISTENCIA CON CÁMARA</p><h1>Centro de control</h1>

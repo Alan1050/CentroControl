@@ -38,6 +38,9 @@ export function sendAction<T = MissionSnapshot>(c: Connection, path: string, bod
 export function createSession(apiUrl: string, mode: 'camera' | 'camera-demo' | 'demo' | 'live', secondsPerMinute = 3) {
   return apiRequest<SessionCreated>(apiUrl, '/sessions', { body: { mode, secondsPerMinute } });
 }
+export function fetchActiveSession(apiUrl: string) {
+  return apiRequest<SessionCreated>(apiUrl, '/active-session');
+}
 
 /** One request at a time. Keeps the last snapshot visible on transient failures. */
 export function watchMission(c: Connection, onData: (s: MissionSnapshot) => void,

@@ -35,3 +35,17 @@
 .mission-hud__check input { width: 18px; height: 18px; }
 .mission-hud .mission-hud__disconnect { margin-top: 18px; background: transparent; font-size: 11px; }
 @media (max-width: 480px) { .mission-hud { top: max(10px, env(safe-area-inset-top)); right: 10px; width: calc(100vw - 20px); } .mission-hud__body { max-height: 65dvh; } }
+
+/* Selector rápido de astronauta y URL fija */
+.hud-bar-crew { display: flex; align-items: center; gap: 8px; }
+.hud-crew-switch { background: #182e4b; color: #f1f6ff; border: 1px solid #4a6385; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 550; cursor: pointer; }
+.astronaut-selector-box { padding: 12px 0 6px; }
+.astronaut-selector-box h2 { font-size: 16px; margin: 0 0 6px; color: #f1f6ff; }
+.astronaut-selector-box p { font-size: 12px; color: #bacbe2; margin: 0 0 14px; line-height: 1.5; }
+.astronaut-selector-grid { display: flex; flex-direction: column; gap: 10px; }
+.astronaut-select-card { display: flex !important; align-items: center !important; gap: 12px !important; text-align: left !important; background: #13243a !important; border: 1px solid #324c6e !important; border-radius: 10px !important; padding: 12px 14px !important; cursor: pointer; transition: background .15s, border-color .15s; }
+.astronaut-select-card:hover { background: #1b3454 !important; border-color: #59ddbf !important; }
+.select-avatar { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #59ddbf; color: #0a1425; font-weight: 700; font-size: 15px; flex-shrink: 0; }
+.select-info { display: flex; flex-direction: column; }
+.select-info strong { font-size: 13px; color: #f1f6ff; }
+.select-info small { font-size: 11px; color: #9ab4d6; }
