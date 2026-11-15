@@ -37,13 +37,15 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
     let mounted = true;
     const loadSession = async () => {
       try {
-        const origin = window.location.origin;
+        const origin = (typeof window !== 'undefined' && window.location?.origin && window.location.origin !== 'null' && window.location.protocol.startsWith('http'))
+          ? window.location.origin
+          : 'https://centrocontrolneuro.netlify.app';
         const session = await fetchActiveSession(origin);
         if (!mounted) return;
         setActiveSession(session);
 
-        const hashMatch = window.location.hash.match(/astronautId=([ABC])/i);
-        const storedAid = sessionStorage.getItem('neuroorbit-astronautId') as AstronautId | null;
+        const hashMatch = typeof window !== 'undefined' && window.location?.hash ? window.location.hash.match(/astronautId=([ABC])/i) : null;
+        const storedAid = typeof sessionStorage !== 'undefined' ? (sessionStorage.getItem('neuroorbit-astronautId') as AstronautId | null) : null;
         const targetAid = (hashMatch?.[1]?.toUpperCase() as AstronautId) || storedAid;
 
         if (targetAid && session.crewKeys[targetAid] && (!connection || connection.astronautId !== targetAid)) {
@@ -54,8 +56,10 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
             astronautId: targetAid,
           };
           setConnection(conn);
-          sessionStorage.setItem('neuroorbit-ojos', JSON.stringify(conn));
-          sessionStorage.setItem('neuroorbit-astronautId', targetAid);
+          if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('neuroorbit-ojos', JSON.stringify(conn));
+            sessionStorage.setItem('neuroorbit-astronautId', targetAid);
+          }
         }
       } catch (e) {
         if (mounted) console.error('Error al sincronizar sesión activa:', e);
@@ -68,16 +72,23 @@ export default function MissionOverlay({ cameraStatus, capture }: { cameraStatus
   const chooseAstronaut = (aid: AstronautId, sess?: SessionCreated | null) => {
     const s = sess || activeSession;
     if (!s) return;
+    const origin = (typeof window !== 'undefined' && window.location?.origin && window.location.origin !== 'null' && window.location.protocol.startsWith('http'))
+      ? window.location.origin
+      : 'https://centrocontrolneuro.netlify.app';
     const conn: Connection = {
-      apiUrl: window.location.origin,
+      apiUrl: origin,
       sessionId: s.sessionId,
       key: s.crewKeys[aid],
       astronautId: aid,
     };
     setConnection(conn);
-    sessionStorage.setItem('neuroorbit-ojos', JSON.stringify(conn));
-    sessionStorage.setItem('neuroorbit-astronautId', aid);
-    window.location.hash = `astronautId=${aid}`;
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('neuroorbit-ojos', JSON.stringify(conn));
+      sessionStorage.setItem('neuroorbit-astronautId', aid);
+    }
+    if (typeof window !== 'undefined' && window.location) {
+      window.location.hash = `astronautId=${aid}`;
+    }
     setAutomatic(false);
     setLocalError('');
   };
