@@ -15,7 +15,7 @@ function Header() {
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M3 12h4l3-6 4 12 3-6h4" />
           </svg>
-          Panel biométrico
+          Asistencia visual
         </div>
       </div>
     </header>

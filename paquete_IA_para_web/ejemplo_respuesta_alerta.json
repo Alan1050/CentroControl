@@ -1,0 +1,21 @@
+{
+  "astronaut_id": "A",
+  "model_version": "gru_v1",
+  "recommended_intervention": {
+    "item": "musica_beethoven",
+    "type": "audio"
+  },
+  "risk": {
+    "anger_next_5min": 0.938,
+    "level": "alto"
+  },
+  "state_now": "calma",
+  "state_probs": {
+    "alegria": 0.001,
+    "calma": 0.985,
+    "estres": 0.0,
+    "fatiga": 0.0,
+    "ira": 0.014
+  },
+  "timestamp": "2026-11-14T23:58:52Z"
+}

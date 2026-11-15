@@ -1,62 +1,55 @@
-# NeuroOrbit Lab · Centro de control
+# NeuroOrbit Lab · MVP con cámara
 
-Panel web para visualizar la salud y el bienestar de una tripulación de astronautas. Reúne la información de cada integrante y una gráfica de presión arterial en una interfaz adaptable a distintos tamaños de pantalla.
+CentroControl y ojos5 comparten una sesión para observar el entorno del astronauta y ofrecer acciones sugeridas. El MVP utiliza únicamente la cámara integrada del teléfono o computadora.
 
-**Estado actual:** prototipo de interfaz. Las tarjetas y las gráficas están preparadas para recibir datos, pero todavía no hay conexión con sensores, API ni almacenamiento persistente.
+Sitio de producción previsto: **https://centrocontrolneuro.netlify.app**. La vista web del astronauta se sirve en `/ojos`.
 
-## Funciones actuales
+## Flujo del MVP
 
-- Tarjetas individuales para los astronautas A, B y C.
-- Campos para nombre, estado, nivel de radiación y estado mental, pendientes de conectar a datos.
-- Gráficas de presión sistólica y diastólica en **mmHg**, dibujadas con SVG sin una biblioteca de gráficas adicional.
-- Estado vacío «Sin lecturas registradas» cuando no hay mediciones disponibles.
-- Distribución de una, dos o tres columnas según el ancho de pantalla.
-- Tema claro u oscuro según la preferencia del sistema.
-- Footer al pie de la ventana cuando hay poco contenido y al final de la página cuando el contenido crece.
+1. «Iniciar sesión con cámara» crea una sesión compartida.
+2. En la tarjeta del astronauta, abre «Conectar ojos5» y utiliza su enlace en el dispositivo con cámara.
+3. El astronauta inicia la observación. Se analiza un fotograma cada veinte segundos, o uno a petición.
+4. La IA describe el entorno y señala evidencia visible de espacio reducido, área de trabajo saturada o aviso de alarma.
+5. El astronauta recibe una sugerencia de pausa y puede aceptar, descartar o registrar si le ayudó. CentroControl recibe las mismas observaciones y respuestas.
 
-## Tecnologías
+La imagen describe contexto; el estado emocional no se deduce de la escena. Si el astronauta decide comunicar estrés, enojo o calma, su respuesta se muestra explícitamente como **estado comunicado**.
 
-| Tecnología | Uso |
-| --- | --- |
-| React | Componentes e interfaz de usuario. |
-| TypeScript | Tipado de componentes y lecturas biométricas. |
-| Vite | Servidor de desarrollo y compilación de producción. |
-| CSS | Diseño adaptable, temas y estilos de los componentes. |
-| SVG | Ejes, cuadrícula y series de las gráficas. |
-| ESLint | Análisis estático del código. |
+«Probar demo visual» reproduce escenas textuales simuladas para demostrar el flujo sin un proveedor configurado. La demo no analiza la cámara ni produce mediciones fisiológicas.
 
+## Ejecutar
 
-## Estructura del proyecto
+Node 22.18 o posterior:
 
-```text
-CentroControl/
-├── public/                       # Recursos estáticos
-├── src/
-│   ├── assets/                   # Identidad visual de NeuroOrbit Lab
-│   ├── components/
-│   │   ├── BloodPressureChart.tsx # Gráfica y tipo de lectura de presión arterial
-│   │   ├── BloodPressureChart.css
-│   │   ├── Card.tsx               # Tarjeta reutilizable de cada astronauta
-│   │   ├── Header.tsx
-│   │   ├── Header.css
-│   │   ├── Footer.tsx
-│   │   └── Footer.css
-│   ├── App.tsx                    # Lista de astronautas y lecturas por integrante
-│   ├── App.css                    # Distribución del panel y tarjetas
-│   ├── index.css                  # Estilos globales y variables de tema
-│   └── main.tsx                   # Entrada de React
-├── index.html
-├── package.json
-├── package-lock.json
-└── vite.config.ts
+```sh
+npm ci
+npm run dev
 ```
 
-## Equipo del proyecto
+Vite sirve el panel, `/ojos` y `/api`. Guarda las sesiones locales en `.mission-data/`, ignorado por Git. Para cámaras en otro teléfono utiliza HTTPS; el dominio público de Netlify sirve como punto común entre redes.
+
+## Publicar y activar la IA
+
+El frontend, la API y el historial se alojan en Netlify usando `netlify.toml`, Functions y Blobs. Este MVP no necesita el servidor Python GRU ni Render.
+
+Para analizar imágenes reales configura `OPENAI_API_KEY` y `VISION_MODEL` como variables de Functions y despliega de nuevo. El modelo debe admitir imágenes y Structured Outputs en Responses. Esas credenciales permanecen en el servidor. Sin ellas se puede conectar la cámara y ejecutar la demo visual; la interfaz indica que el análisis real está pendiente de activación.
+
+Para una publicación inicial mediante el navegador, `npm run package:source` genera `../.release/upload/` con el archivo fuente verificado, README y configuración. Netlify materializa el archivo únicamente si falta `server/mission.ts`; un checkout completo utiliza directamente sus fuentes. El paquete excluye credenciales, dependencias instaladas y datos de sesiones.
+
+## Verificar
+
+```sh
+npm test
+npm run build
+npm run lint
+npm run check:shared
+```
+
+La guía [INTEGRACION.md](INTEGRACION.md) documenta el contrato y las diferencias entre una observación visual, una escena simulada y una respuesta del astronauta. La investigación fisiológica original permanece en `paquete_IA_para_web/` y en la carpeta hermana `IA/`; no es una dependencia operativa del MVP.
+
+## Equipo
 
 - Iris Anahi Vargas Brambila.
 - Kevin Yahir Bernal Aguirre.
 - [Alan Emir Medina Delgado](https://devalanmedina.netlify.app/).
 
------
-
-Propuesta realizada para el [NASA SPACE APPS CHALLENGE Edición 2026](https://www.spaceappschallenge.org/) en el reto #5 denominado como "Create Health Monitoring Software for Astronauts on Space Missions"
+Propuesta para NASA Space Apps Challenge 2026: Create Health Monitoring Software for Astronauts on Space Missions.

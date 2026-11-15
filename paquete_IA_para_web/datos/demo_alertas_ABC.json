@@ -1,0 +1,3623 @@
+{
+ "A": [
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 9,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 10,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 11,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 12,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 13,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 14,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 15,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 16,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.002
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 17,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.002
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 18,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 19,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 20,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 21,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 22,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 23,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 24,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.061,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 25,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.001,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.178,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 26,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.001,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.588,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 27,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:01Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.997,
+    "estres": 0.0,
+    "ira": 0.003,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.642,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 28,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.993,
+    "estres": 0.0,
+    "ira": 0.006,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.765,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 29,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.985,
+    "estres": 0.0,
+    "ira": 0.014,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.938,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 30,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.962,
+    "estres": 0.0,
+    "ira": 0.036,
+    "fatiga": 0.0,
+    "alegria": 0.002
+   },
+   "risk": {
+    "anger_next_5min": 0.938,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 31,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.87,
+    "estres": 0.001,
+    "ira": 0.127,
+    "fatiga": 0.0,
+    "alegria": 0.003
+   },
+   "risk": {
+    "anger_next_5min": 0.938,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 32,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.66,
+    "estres": 0.001,
+    "ira": 0.336,
+    "fatiga": 0.0,
+    "alegria": 0.003
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 33,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.176,
+    "estres": 0.001,
+    "ira": 0.822,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 34,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.087,
+    "estres": 0.001,
+    "ira": 0.912,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 35,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.047,
+    "estres": 0.0,
+    "ira": 0.952,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 36,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.029,
+    "estres": 0.0,
+    "ira": 0.97,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 37,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.014,
+    "estres": 0.0,
+    "ira": 0.986,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 38,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.016,
+    "estres": 0.0,
+    "ira": 0.984,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 39,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.016,
+    "estres": 0.0,
+    "ira": 0.983,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 40,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.01,
+    "estres": 0.0,
+    "ira": 0.99,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 41,
+    "state_real": "ira",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.368,
+    "estres": 0.006,
+    "ira": 0.606,
+    "fatiga": 0.001,
+    "alegria": 0.019
+   },
+   "risk": {
+    "anger_next_5min": 0.619,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_beethoven"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 42,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.664,
+    "estres": 0.005,
+    "ira": 0.08,
+    "fatiga": 0.001,
+    "alegria": 0.25
+   },
+   "risk": {
+    "anger_next_5min": 0.077,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 43,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.34,
+    "estres": 0.003,
+    "ira": 0.021,
+    "fatiga": 0.0,
+    "alegria": 0.636
+   },
+   "risk": {
+    "anger_next_5min": 0.033,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 44,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.081,
+    "estres": 0.001,
+    "ira": 0.002,
+    "fatiga": 0.0,
+    "alegria": 0.916
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 45,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.023,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.976
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 46,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.009,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.991
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 47,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.005,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.995
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 48,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.003,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.997
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 49,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 50,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 51,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 52,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:02Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 53,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 54,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 55,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 56,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 57,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 58,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "A",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 59,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  }
+ ],
+ "B": [
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 9,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 10,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 11,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 12,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 13,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 14,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 15,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 16,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 17,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 18,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 19,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 20,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 21,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 22,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 23,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 24,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 25,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 26,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 27,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:03Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 28,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.001,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.999
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 29,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.002,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.998
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 30,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.004,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.996
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 31,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.008,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.991
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 32,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.013,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.987
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 33,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.022,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.978
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 34,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.036,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.962
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 35,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.062,
+    "estres": 0.001,
+    "ira": 0.0,
+    "fatiga": 0.001,
+    "alegria": 0.936
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 36,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "alegria",
+   "state_probs": {
+    "calma": 0.169,
+    "estres": 0.001,
+    "ira": 0.001,
+    "fatiga": 0.007,
+    "alegria": 0.823
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 37,
+    "state_real": "alegria",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.867,
+    "estres": 0.001,
+    "ira": 0.001,
+    "fatiga": 0.058,
+    "alegria": 0.072
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 38,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.937,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.062,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 39,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.863,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.136,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 40,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.863,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.136,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 41,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.644,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.356,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 42,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.591,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.408,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 43,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "fatiga",
+   "state_probs": {
+    "calma": 0.468,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.532,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 44,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "fatiga",
+   "state_probs": {
+    "calma": 0.457,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.543,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 45,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.613,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.386,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 46,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.82,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.18,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 47,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.909,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.09,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 48,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.946,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.053,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 49,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.97,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.029,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 50,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.971,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.028,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 51,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.99,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.01,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 52,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:04Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.993,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.007,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 53,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.995,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.005,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 54,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.994,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.005,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 55,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.993,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.007,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 56,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.987,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.013,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 57,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.986,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.013,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 58,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "B",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.986,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.014,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 59,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  }
+ ],
+ "C": [
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.216,
+    "estres": 0.001,
+    "ira": 0.78,
+    "fatiga": 0.001,
+    "alegria": 0.003
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 9,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.1,
+    "estres": 0.001,
+    "ira": 0.897,
+    "fatiga": 0.0,
+    "alegria": 0.002
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 10,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.033,
+    "estres": 0.0,
+    "ira": 0.966,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 11,
+    "state_real": "calma",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.022,
+    "estres": 0.0,
+    "ira": 0.977,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 12,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.016,
+    "estres": 0.0,
+    "ira": 0.984,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 13,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.015,
+    "estres": 0.0,
+    "ira": 0.984,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 14,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.012,
+    "estres": 0.0,
+    "ira": 0.987,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 15,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.027,
+    "estres": 0.001,
+    "ira": 0.971,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 16,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.043,
+    "estres": 0.001,
+    "ira": 0.954,
+    "fatiga": 0.0,
+    "alegria": 0.002
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 17,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.029,
+    "estres": 0.001,
+    "ira": 0.969,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 18,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.019,
+    "estres": 0.001,
+    "ira": 0.979,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 19,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.018,
+    "estres": 0.001,
+    "ira": 0.981,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 20,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.026,
+    "estres": 0.001,
+    "ira": 0.972,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 21,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.015,
+    "estres": 0.001,
+    "ira": 0.983,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 22,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.013,
+    "estres": 0.0,
+    "ira": 0.986,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 23,
+    "state_real": "ira",
+    "anger_next5_real": 1
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "ira",
+   "state_probs": {
+    "calma": 0.016,
+    "estres": 0.0,
+    "ira": 0.983,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.994,
+    "level": "alto"
+   },
+   "recommended_intervention": {
+    "type": "audio",
+    "item": "musica_suave"
+   },
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 24,
+    "state_real": "ira",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.661,
+    "estres": 0.003,
+    "ira": 0.316,
+    "fatiga": 0.004,
+    "alegria": 0.015
+   },
+   "risk": {
+    "anger_next_5min": 0.077,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 25,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:05Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.973,
+    "estres": 0.001,
+    "ira": 0.014,
+    "fatiga": 0.001,
+    "alegria": 0.011
+   },
+   "risk": {
+    "anger_next_5min": 0.014,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 26,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.992,
+    "estres": 0.0,
+    "ira": 0.002,
+    "fatiga": 0.001,
+    "alegria": 0.005
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 27,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.997,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.003
+   },
+   "risk": {
+    "anger_next_5min": 0.011,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 28,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.998,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 29,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 30,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 31,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 32,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.003,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 33,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 34,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 35,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 36,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 37,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 38,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 39,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 40,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 41,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 42,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 43,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 44,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 45,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 46,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 47,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:06Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 48,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 49,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 1.0,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 50,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 51,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.0
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 52,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 53,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 54,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.0,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 55,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 56,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 57,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 58,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  },
+  {
+   "astronaut_id": "C",
+   "timestamp": "2026-11-14T23:59:07Z",
+   "state_now": "calma",
+   "state_probs": {
+    "calma": 0.999,
+    "estres": 0.0,
+    "ira": 0.0,
+    "fatiga": 0.0,
+    "alegria": 0.001
+   },
+   "risk": {
+    "anger_next_5min": 0.002,
+    "level": "bajo"
+   },
+   "recommended_intervention": null,
+   "model_version": "gru_v1",
+   "demo": {
+    "t_min": 59,
+    "state_real": "calma",
+    "anger_next5_real": 0
+   }
+  }
+ ]
+}

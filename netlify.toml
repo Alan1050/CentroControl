@@ -1,0 +1,24 @@
+[build]
+  # The archive supports a first publication through GitHub's browser uploader.
+  # A normal source checkout already contains server/mission.ts and builds directly.
+  command = "if [ ! -f server/mission.ts ]; then unzip -oq neuroorbit-source.zip -d .; fi; npm --prefix netlify install --ignore-scripts --no-audit --no-fund && npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    Permissions-Policy = "camera=(self), microphone=()"

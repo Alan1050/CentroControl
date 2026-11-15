@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "sync:ojos": "node scripts/sync-ojos.mjs",
+    "check:shared": "node scripts/sync-ojos.mjs --check",
+    "export:demo": "python3 scripts/export-demo.py",
+    "package:source": "python3 scripts/package-source.py"
   },
   "dependencies": {
     "react": "^19.3.1",

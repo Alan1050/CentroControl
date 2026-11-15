@@ -1,46 +1,35 @@
-import BloodPressureChart from './BloodPressureChart.tsx'
-import type { BloodPressureReading } from './BloodPressureChart.tsx'
+import { interventionText, sourceLabels, stateLabels, triggerLabels } from '../mission/protocol.ts';
+import type { Alert, CrewStatus, ResponseAction } from '../mission/protocol.ts';
 
-type CardProps = {
-  astronautId: string
-  position: number
-  readings: readonly BloodPressureReading[]
+function AlertContent({ alert, pending, onRespond }: { alert: Alert; pending: boolean; onRespond?: (id: string, action: ResponseAction) => void }) {
+  const suggestion = alert.intervention ? interventionText[alert.intervention.item] : null;
+  return <div className="alert-detail alert-detail--context"><div className="alert-title"><strong>Posible detonador</strong><span>{alert.active ? 'A revisar' : 'Ya no aparece'}</span></div>
+    {alert.triggers.map(t => <div key={t.id}><p><strong>{triggerLabels[t.trigger]}</strong></p><p className="visual-evidence">{t.evidence}</p><small>{sourceLabels[t.source]}</small></div>)}
+    {suggestion && <div className="suggestion"><strong>{suggestion.title}</strong><p>{suggestion.description}</p></div>}
+    {alert.response && <p className="response-label">Respuesta: {alert.response.action.replace('_', ' ')}</p>}
+    {onRespond && alert.active && <button className="button button--small" disabled={pending} onClick={() => onRespond(alert.id, 'reconocida')}>Reconocer aviso</button>}
+  </div>;
 }
-
-const fields = ['Nombre', 'Estado', 'Nivel de radiación', 'Estado mental']
-
-function Card({ astronautId, position, readings }: CardProps) {
-  const astronautName = `Astronauta ${astronautId}`
-
-  return (
-    <article className="astronaut-card" data-astronaut={astronautId} aria-labelledby={`astronaut-${astronautId}`}>
-      <div className="astronaut-card__heading">
-        <div className="astronaut-card__avatar" aria-hidden="true">
-          <svg viewBox="0 0 28 28" fill="none">
-            <path d="M6 15v-3a8 8 0 0 1 16 0v3a8 8 0 0 1-16 0Z" />
-            <rect x="9" y="8" width="10" height="8" rx="3" />
-            <path d="M5 12H3v5h3m16-5h3v5h-3M9 21v3h10v-3M12 11h3" />
-          </svg>
-        </div>
-        <div>
-          <p className="astronaut-card__number">Tripulante {String(position).padStart(2, '0')}</p>
-          <h2 id={`astronaut-${astronautId}`}>{astronautName}</h2>
-        </div>
-
-      </div>
-
-      <dl className="astronaut-card__details">
-        {fields.map((field) => (
-          <div key={field}>
-            <dt>{field}</dt>
-            <dd aria-label="Sin datos">—</dd>
-          </div>
-        ))}
-      </dl>
-
-      <BloodPressureChart astronautName={astronautName} readings={readings} />
-    </article>
-  )
+export default function Card({ crew, pending, onRespond, joinLink, connected, serverTime }: {
+  crew: CrewStatus; pending: boolean; onRespond?: (id: string, action: ResponseAction) => void;
+  joinLink?: string; connected: boolean; serverTime: string;
+}) {
+  const latest = crew.visualAnalyses.at(-1); const active = crew.alerts.filter(a => a.active);
+  const deviceOnline = connected && crew.deviceLastSeen && Date.parse(serverTime) - Date.parse(crew.deviceLastSeen) < 75000;
+  return <article className={`astronaut-card ${active.length ? 'astronaut-card--attention' : ''}`} data-astronaut={crew.id}>
+    <div className="astronaut-card__heading"><div className="astronaut-card__avatar" aria-hidden="true">{crew.id}</div>
+      <div><p className="astronaut-card__number">{crew.profile.specialty.replaceAll('_', ' ')}</p><h2>Astronauta {crew.id}</h2></div>
+      <span className="status-pill">{!connected ? 'Conexión interrumpida' : latest?.source === 'simulador' ? 'Escena simulada' : latest ? 'Observación visual' : 'Esperando cámara'}</span></div>
+    <div className="device-status"><span className={`connection-dot ${deviceOnline ? 'connection-dot--live' : ''}`} />Ojos: {deviceOnline ? crew.cameraStatus === 'live' ? 'cámara activa' : 'dispositivo conectado' : 'sin dispositivo conectado'}</div>
+    <section className="visual-scene"><span className="section-kicker">ÚLTIMA OBSERVACIÓN</span><p>{latest?.summary || 'Conecta ojos5 e inicia el análisis del entorno para recibir observaciones.'}</p>
+      {latest && <small>{new Date(latest.timestamp).toLocaleTimeString('es-MX')} · {sourceLabels[latest.source]}</small>}</section>
+    <div className="reported-state"><span>Estado comunicado por el astronauta</span><strong>{crew.selfReport ? stateLabels[crew.selfReport.state] : 'Sin confirmar'}</strong>
+      {crew.selfReport && <small>{new Date(crew.selfReport.timestamp).toLocaleTimeString('es-MX')}</small>}</div>
+    {crew.quality === 'desactualizada' && <p className="inline-error">No hay observaciones recientes. Se conserva el último entorno analizado.</p>}
+    {active.length ? <div className="crew-alerts">{active.map(a => <AlertContent key={a.id} alert={a} pending={pending} onRespond={onRespond} />)}</div>
+      : latest && <p className="camera-quiet">Sin posibles detonadores en la última observación.</p>}
+    {crew.visualAnalyses.length > 0 && <details className="context-details"><summary>Observaciones anteriores ({crew.visualAnalyses.length})</summary>{crew.visualAnalyses.slice(-8).toReversed().map(a => <p key={a.id}><strong>{new Date(a.timestamp).toLocaleTimeString('es-MX')}</strong> · {a.summary}</p>)}</details>}
+    {joinLink && <details className="join-details"><summary>Conectar ojos5 · Astronauta {crew.id}</summary><p>Abre el enlace en el teléfono o computadora del astronauta.</p>
+      <input aria-label={`Enlace del astronauta ${crew.id}`} readOnly value={joinLink} onFocus={e => e.currentTarget.select()} /><a className="button button--small" href={joinLink} target="_blank" rel="noreferrer">Abrir ojos5</a></details>}
+  </article>;
 }
-
-export default Card
